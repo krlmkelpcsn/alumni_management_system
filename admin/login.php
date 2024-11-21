@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php 
+session_start();
+include('./db_connect.php');
+ob_start();
+if(!isset($_SESSION['system'])){
+	$system = $conn->query("SELECT * FROM system_settings limit 1")->fetch_array();
+	foreach($system as $k => $v){
+		$_SESSION['system'][$k] = $v;
+	}
+}
+ob_end_flush();
+?>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title><?php echo $_SESSION['system']['name'] ?></title>
+ 	
+
+<?php include('./header.php'); ?>
+<?php 
+if(isset($_SESSION['login_id']))
+header("location:/index.php?page=home");
+
+?>
+
+</head>
+<style>
+	/* ain#main{
+		width:100%;
+		height: calc(100%);
+		background:white;
+	}	m */
+	/* #login-right{
+		position: absolute;
+		right:0;
+		width:40%;
+		height: calc(100%);
+		background:white;
+		display: flex;
+		align-items: center;
+	} */
+	/* #login-left{
+		position: absolute;
+		width:100%;
+		height: calc(100%);
+		background:#59b6ec61;
+		display: flex;
+		justify-content:center;
+		align-items: center;
+		/* background: url(assets/uploads/<?php echo $_SESSION['system']['cover_img'] ?>);
+		background-repeat: no-repeat;
+		background-size: 100% 100%; */
+
+	/* #login-right .card{
+		margin: auto;
+		z-index: 1
+	} */
+	
+	
+	/* .login-form{
+    margin: auto;
+    font-size: 8rem;
+    background: white;
+    padding: .5em 0.7em;
+    border-radius: 50% 50%;
+    color: #000000b3;
+    z-index: 10;
+	} */
+	/* div#login-right::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100%);
+    height: calc(100%);
+    
+	} */
+	
+	body{
+		height: 100vh;
+		color:white;
+		background: #1A535C;
+		display: flex;
+		justify-content:center;
+		align-items: center;
+		/* background-image: url("assets/img/home-background.webp"); */
+	}
+	
+.form-group {
+	margin-bottom: 1.9em;
+}
+
+#login-form{
+	width: 25%;
+	color: white;
+	padding:1em 2em;
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	background-color: rgba(17, 25, 40, 0.75);
+	border-radius: 12px;
+	box-shadow: 0 0 5px rgba(255, 255, 255, 0.725);
+	
+}
+
+.head {
+	display: flex;
+	flex-direction:column;
+	align-items:center;
+	gap:1rem;
+}
+
+.head img {
+	width: 100px;
+	border-radius: 50%;
+	margin-top:1rem;
+}
+
+h2 {
+	text-align:center;
+}
+
+.bg {
+	backdrop-filter: blur(16px) saturate(180%);
+	position:absolute;
+	height: 100vh;
+	width: 100%;
+	z-index: -1;
+}
+
+#btn {
+	box-shadow: 0 0 5px rgba(255, 255, 255, 0.225);
+}
+
+input {
+	border:none;
+}
+</style>
+
+<body>
+
+	<!-- <div class="bg"></div> -->
+		<form id="login-form" >
+			<div class="head">
+				<img src="assets/img/logo.jpg" alt="login-logo">
+				<h2>LOGIN</h2>
+			</div>
+			<div class="form-group">
+				<label for="username" class="control-label">Username</label>
+				<input type="text" id="username" name="username" class="form-control" placeholder="Enter your username...">
+			</div>
+			<div class="form-group">
+				<label for="password" class="control-label">Password</label>
+				<input type="password" id="password" name="password" class="form-control "placeholder="Enter your password...">
+			</div>
+			<center><button id="btn" class="btn-sm btn-block btn-wave rounded p-2 mb-3 col-md-4 btn-primary">Login</button></center>
+		</form>
+
+  			
+
+
+   
+
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+
+</body>
+<script>
+	// document.getElementById("btn").onclick = function submit() {
+	// 	if ()
+	// }
+	
+
+
+
+	$('#login-form').submit(function(e){
+		e.preventDefault()
+		$('#login-form button[type="button"]').attr('disabled',true).html('Logging in...');
+		if($(this).find('.alert-danger').length > 0 )
+			$(this).find('.alert-danger').remove();
+		$.ajax({
+			url:'ajax.php?action=login',
+			method:'POST',
+			data:$(this).serialize(),
+			error:err=>{
+				console.log(err)
+		$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
+
+			},
+			success:function(resp){
+				if(resp == 1){
+					location.href ='index.php?page=home';
+				}else{
+					$('#login-form').prepend('<div class="alert alert-danger">Username or password is incorrect.</div>')
+					$('#login-form button[type="button"]').removeAttr('disabled').html('Login');
+				}
+			}
+		})
+	})
+</script>	
+</html>
