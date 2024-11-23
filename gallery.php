@@ -1,7 +1,7 @@
 <?php 
 include 'admin/db_connect.php'; 
 ?>
-<style>
+<!-- <style>
     * {
         font-family:system-ui;
     }
@@ -63,7 +63,80 @@ header.masthead,header.masthead:before {
     .head {
         padding-top:7rem;
     }
+</style> -->
+
+<style>
+    * {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        /* background-color: #f8f9fa; */
+    }
+    header.masthead {
+        background: linear-gradient(to bottom, #6c757d, #343a40);
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+    }
+    header.masthead h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+    .gallery-list {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .gallery-list:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 10px 40px rgba(42, 48, 238, 0.362);    }
+    .gallery-img img {
+        border-radius: 10px;
+        height: auto;
+        max-height: 50vh;
+        object-fit: cover;
+        width: 100%;
+    }
+    .card-body {
+        background-color: #fff;
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    .card-body span {
+        font-weight: 600;
+        color: #495057;
+    }
+    .truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    .row-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .col-md-4 {
+        margin-bottom: 1.5rem;
+    }
+    footer {
+        background: #343a40;
+        color: #fff;
+        padding: 1rem 0;
+        text-align: center;
+    }
+    .head {
+        padding-top:7rem;
+    }
 </style>
+
         <header class="">
             <div class="head container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
