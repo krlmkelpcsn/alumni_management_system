@@ -65,7 +65,7 @@ span.hightlight{
       section {
         height: 100vh;
         width: 100%;
-        background: #021526;
+        background: #F5F7F8;
         padding: 0 2em;
         display: flex;
         align-items: center;
@@ -78,14 +78,15 @@ span.hightlight{
       }
 
      .msg_con h1 {
-        color: white;
+        color: #4e73df;
         font-size: 2.4rem;
         line-height: 3rem;
       }
 
       .msg_con p {
         width: 87%;
-        color: rgb(220, 215, 215);
+        /* color: rgb(220, 215, 215); */
+        color: #555;
         line-height: 1.3rem;
         margin-top:10px;
         margin-bottom: 1.6em;
@@ -104,9 +105,13 @@ span.hightlight{
         width: 100%;
         border-radius: 14px;
         box-shadow: 0px 0px 40px rgba(42, 48, 238, 0.362);
+        cursor:pointer;
+        transition: transform 0.3s ease-in-out;
       }
 
-      
+      .hero_img img:hover {
+        transform: scale(1.05); 
+      }
 
       .hero_btn_con {
         display: flex;
@@ -128,15 +133,14 @@ span.hightlight{
 
       .contact_btn {
         cursor: pointer;
-        border: none;
         font-size: 14px;
         letter-spacing: 1px;
-        color: rgb(255, 255, 255);
+        color: #212529;
         padding: 11px 24px;
         transition: 0.2s ease-in-out;
         width: 180px;
-        box-shadow: 0px 9px 25px rgba(242, 242, 242, 0.144);
-        border: 2px solid rgba(236, 236, 236, 0.791);
+        box-shadow: 0px 15px 25px #ccc;
+        border: 2px solid #4e73df;
         border-radius: 10px;
         background: none;
         font-weight: 500;
@@ -146,17 +150,63 @@ span.hightlight{
         --hover-color: #fff;
       }
 
-      .about_btn:hover {
-        background: rgba(14, 14, 255, 0.83);
-      }
-
-      .contact_btn:hover {
-        background: rgba(255, 255, 255, 0.236);
+      .about_btn:hover, .contact_btn:hover {
+        /* background: rgba(14, 14, 255, 0.83); */
+        transform: scale(1.05); 
       }
 
       h2 {
         padding-bottom: 2em;
+        color: #4e73df;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
       }
+
+         /* Card Hover Effect */
+    .card.event-list {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card.event-list:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card-body {
+      border-bottom-right-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .row-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+  
 </style>
         <!-- <header class="masthead">
             <div class="container-fluid h-200">
@@ -183,7 +233,7 @@ span.hightlight{
           great things happen together!
         </p>
         <div class="hero_btn_con">
-          <a href="index.php?page=about"><button class="about_btn">About</button></a>
+          <a href="index.php?page=about"><button class="about_btn bg-primary">About</button></a>
           <a href="index.php?page=signup"><button class="contact_btn" id='login'>Sign up</button></a>
         </div>
       </div>
@@ -199,9 +249,11 @@ span.hightlight{
 
 
 
-
-            <div  class="container pt-4">
-                <h2 class="text-center text-white">Upcoming Events</h2>
+    <div  class="container pt-4 ">
+      <h2 class="text-center mb-4">Upcoming Events</h2>
+<div class="row-items">
+            <div class="row">
+              
                 <?php
                 $event = $conn->query("SELECT * FROM events where date_format(schedule,'%Y-%m%-d') >= '".date('Y-m-d')."' order by unix_timestamp(schedule) asc");
                 while($row = $event->fetch_assoc()):
@@ -210,32 +262,28 @@ span.hightlight{
                     $desc = strtr(html_entity_decode($row['content']),$trans);
                     $desc=str_replace(array("<li>","</li>"), array("",","), $desc);
                 ?>
-                <div class="card event-list" data-id="<?php echo $row['id'] ?>">
-                     <div class='banner'>
-                        <?php if(!empty($row['banner'])): ?>
-                            <img src="admin/assets/uploads/<?php echo($row['banner']) ?>" alt="">
-                        <?php endif; ?>
-                    </div>
-                    <div class="card-body bg-info text-white">
-                        <div class="row  align-items-center justify-content-center text-center h-100">
-                            <div class="col  align-items-center justify-content-center text-center">
-                                <h3><b class="filter-txt"><?php echo ucwords($row['title']) ?></b></h3>
-                                <div><small><p><b><i class="fa fa-calendar"></i> <?php echo date("F d, Y h:i A",strtotime($row['schedule'])) ?></b></p></small></div>
-                                <hr>
-                                <larger class="truncate filter-txt text-white"><?php echo strip_tags($desc) ?></larger>
-                                <br>
-                                <!-- <hr class="divider"  style="max-width: calc(80%)"> -->
-                                <button class="btn btn-primary read_more " data-id="<?php echo $row['id'] ?>">Read More</button>
-                            </div>
-                        </div>
-                        
+<div class="col-md-4 mb-4"> <!-- 3 Columns layout -->
+  <div class="card " style="width: 22rem;" data-id="<?php echo $row['id'] ?>">
+  <div class="banner" style="width: 22rem; height: 18em;">
+              <?php if (!empty($row['banner'])): ?>
+                  <img src="admin/assets/uploads/<?php echo($row['banner']) ?>" alt="" class="card-img-top" >
+              <?php endif; ?>
+          </div>
+    <div class="card-body">
+      <h5 class="card-title"><?php echo ucwords($row['title']) ?></h5>
+      <div class="text-muted mb-3">
+                  <small><i class="fa fa-calendar"></i> <?php echo date("F d, Y h:i A", strtotime($row['schedule'])) ?></small>
+              </div>
+      <p class="card-text" style="height: 60px; overflow: hidden; text-overflow: ellipsis; scroll"><?php echo strip_tags($desc) ?></p>
+      <button class="btn btn-primary read_more" data-id="<?php echo $row['id'] ?>">Read More</button>  </div>
+  </div>
+  </div>
 
-                    </div>
-                </div>
-                <br>
-                <?php endwhile; ?>
-                
+  <?php endwhile; ?>
             </div>
+              </div>
+              </div>
+
 
 
 <script>
