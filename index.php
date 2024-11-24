@@ -60,23 +60,24 @@
    */
 
  body {
-    background: #021526 ;
-}
-
-
-footer {
-    background-color: #343a40;
-}
-
-footer a {
-    text-decoration: none;
-    transition: color 0.2s;
+    background: #F5F7F8 ;
 }
 
 footer a:hover {
-    color: #ffc107;
-}
-
+        color: #1cc88a; /* Light green on hover */
+        text-decoration: underline;
+    }
+    footer .bi, footer .fab {
+        font-size: 1.2rem;
+        transition: color 0.3s;
+    }
+    footer .bi:hover, footer .fab:hover {
+        color: #1cc88a;
+    }
+    hr {
+      border: solid .5px #5e5e5e;
+    }
+/*  
 
 a.jqte_tool_label.unselectable {
   height: auto !important;
@@ -150,7 +151,7 @@ a.jqte_tool_label.unselectable {
       <div class="modal-content">
         <div class="modal-header">
         <h5 class="modal-title">Confirmation</h5>
-      </div>-->
+      </div>
       <div class="modal-body">
         <div id="delete_content"></div>
       </div>
@@ -199,45 +200,59 @@ a.jqte_tool_label.unselectable {
     </div>
   </div>
   <div id="preloader"></div>
-  <footer class="bg-dark text-light py-4">
+
+<footer class="bg-dark text-light py-5 d-flex justify-content-between">
     <div class="container">
         <div class="row">
             <!-- About Section -->
-            <div class="col-md-4 mb-3">
-                <h5>About Us</h5>
-                <p>
-                    This Alumni Management System is designed to connect graduates with their alma mater. Stay in touch, share your experiences, and contribute to the community.
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold text-uppercase">About Us</h5>
+                <p class="small">
+                    The Alumni Management System is designed to connect graduates with their alma mater. Stay in touch, share your experiences, and contribute to the community.
                 </p>
             </div>
 
             <!-- Quick Links -->
-            <div class="col-md-4 mb-3">
-                <h5>Links</h5>
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold text-uppercase">Quick Links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="{{ url('/') }}" class="text-light">Home</a></li>
-                    <li><a href="{{ url('/about') }}" class="text-light">About</a></li>
-                    <li><a href="{{ url('/events') }}" class="text-light">Events</a></li>
-                    <li><a href="{{ url('/contact') }}" class="text-light">Contact Us</a></li>
+                    <li><a href="{{ url('/') }}" class="text-light text-decoration-none">Home</a></li>
+                    <li><a href="{{ url('/about') }}" class="text-light text-decoration-none">About</a></li>
+                    <li><a href="{{ url('/events') }}" class="text-light text-decoration-none">Events</a></li>
+                    <li><a href="{{ url('/contact') }}" class="text-light text-decoration-none">Contact Us</a></li>
                 </ul>
             </div>
 
             <!-- Contact Info -->
-            <div class="col-md-4 mb-3">
-                <h5>Contact Us</h5>
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold text-uppercase">Contact Us</h5>
                 <ul class="list-unstyled">
-                    <li><i class="bi bi-envelope"></i> <a href="mailto:info@alumni.com" class="text-light">spnh@alumni.com</a></li>
-                    <li><i class="bi bi-telephone"></i> +6395 4567 7890</li>
-                    <li><i class="bi bi-geo-alt"></i> San Pedro Iriga City</li>
+                    <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:spnh@alumni.com" class="text-light text-decoration-none">spnh@alumni.com</a></li>
+                    <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i>+63 95 4567 7890</li>
+                    <li><i class="bi bi-geo-alt-fill me-2"></i>San Pedro, Iriga City</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Copyright -->
-        <div class="text-center mt-3">
-            <p class="mb-0">&copy; 2024 San Pedro National High School. All Rights Reserved.</p>
+        <hr class="" />
+
+        <!-- Social Media & Copyright -->
+        <div class="row align-items-center justify-content-between text-center text-md-start">
+            <div class="col-md-6">
+                <p class="mb-0 small">&copy; 2024 San Pedro National High School. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-center justify-content-center">
+                    <a href="#" class="text-light mr-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-light mr-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light mr-3"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 </footer>
+
 
         
        <?php include('footer.php') ?>
