@@ -139,7 +139,7 @@ header.masthead,header.masthead:before {
       <input type="text"  id="filter" class="form-control rounded" placeholder="Name" aria-label="Search" aria-describedby="search-addon" />
       <button type="button" class="btn btn-outline-primary col-md-3" data-mdb-ripple-init>search</button>
     </div>
-            </div> -->
+            </div>
             <div class="container-fluid mt-3 pt-2">
                
                 <div class="row-items">
