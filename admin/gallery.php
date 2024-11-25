@@ -75,12 +75,25 @@
 
                                     <td><?php echo $row['about']; ?></td>
                                     <td class="text-center">
-
-                                        <button class="btn btn-sm btn-warning edit_gallery" type="button" data-id="<?php echo $row['id']; ?>" data-about="<?php echo $row['about']; ?>" data-src="<?php echo isset($img[$row['id']]) && is_file($fpath.'/'.$img[$row['id']]) ? $fpath.'/'.$img[$row['id']] : ''; ?>"><i class="fas fa-edit"></i> Edit</button>
-                                        <button class="btn btn-sm btn-danger delete_gallery" type="button" data-id="<?php echo $row['id']; ?>"><i class="fas fa-trash-alt"></i> Delete</button>
-                                    </td>
-                                </tr>
-                                <?php endwhile; ?> 
+        <!-- Check if the user role is not 'client' -->
+        <?php if ($_SESSION['login_type'] == 1): ?>
+            <button class="btn btn-sm btn-warning edit_gallery" type="button" 
+                    data-id="<?php echo $row['id']; ?>" 
+                    data-about="<?php echo htmlspecialchars($row['about']); ?>" 
+                    data-src="<?php echo isset($img[$row['id']]) && is_file($fpath.'/'.$img[$row['id']]) ? $fpath.'/'.$img[$row['id']] : ''; ?>">
+                <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-danger delete_gallery" type="button" 
+                    data-id="<?php echo $row['id']; ?>">
+                <i class="fas fa-trash-alt"></i> Delete
+            </button>
+        <?php else: ?>
+            <!-- Show a placeholder or nothing for clients -->
+            <span>No Actions Available</span>
+        <?php endif; ?>
+            </td>
+        </tr>
+        <?php endwhile; ?>
                             </tbody>
                         </table>
                     </div>

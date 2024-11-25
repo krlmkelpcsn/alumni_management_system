@@ -1,4 +1,10 @@
 <?php include 'admin/db_connect.php' ?>
+<style>
+	.container-fluid hr {
+        border-top: 1px solid #ddd;
+        margin: 1rem 0;
+    }
+</style>
 <?php
 if(isset($_GET['id'])){
 	$qry = $conn->query("SELECT * FROM careers where id=".$_GET['id'])->fetch_array();
@@ -11,8 +17,8 @@ if(isset($_GET['id'])){
 <div class="container-fluid">
 	<p>Company: <b><large><?php echo ucwords($company) ?></large></b></p>
 	<p>Job Title: <b><large><?php echo ucwords($job_title) ?></large></b></p>
-	<p>Location: <i class="fa fa-map-marker"></i> <b><large><?php echo $company ?></large></b></p>
-	<hr class="divider">
+	<p>Location: <b><i class="fa fa-map-marker"></i><large><?php echo $location ?></large></b></p>
+	<hr>
 	<?php echo html_entity_decode($description) ?>
 </div>
 <div class="modal-footer display">
@@ -23,6 +29,7 @@ if(isset($_GET['id'])){
 	</div>
 </div>
 <style>
+
 	p{
 		margin:unset;
 	}
