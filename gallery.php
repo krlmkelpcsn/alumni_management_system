@@ -81,9 +81,11 @@ header.masthead,header.masthead:before {
         text-align: center;
         padding: 2rem 0;
     }
-    header.masthead h1 {
+    header .head h1 {
+        color: #4e73df;
         font-size: 2.5rem;
-        font-weight: 600;
+        margin-bottom: 1rem;
+        font-weight: 700;
     }
     .gallery-list {
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -93,7 +95,8 @@ header.masthead,header.masthead:before {
     }
     .gallery-list:hover {
         transform: scale(1.05);
-        box-shadow: 0px 10px 40px rgba(42, 48, 238, 0.362);    }
+        box-shadow: 0px 10px 40px rgba(42, 48, 238, 0.362);    
+    }
     .gallery-img img {
         border-radius: 10px;
         height: auto;
@@ -135,13 +138,34 @@ header.masthead,header.masthead:before {
     .head {
         padding-top:7rem;
     }
+
+
+        /* Card Hover Effect */
+        .card.event-list:hover {
+        transform: scale(1.02);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    
 </style>
 
         <header class="">
             <div class="head container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end mb-4 page-title">
-                        <h1 class="text-white">Gallery</h1>
+                        <h1 class="mt-3 display-4 fw-bold">Gallery</h1>
                         <!-- <hr class="divider my-4" /> -->
 
                     <div class="col-md-12 mb-2 justify-content-center">
