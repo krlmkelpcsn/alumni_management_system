@@ -1,85 +1,134 @@
 <?php 
 include 'admin/db_connect.php'; 
 ?>
+
+
 <style>
     * {
-        font-family: system-ui;
-    }
-#portfolio .img-fluid{
-    width: calc(100%);
-    height: 30vh;
-    z-index: -1;
-    position: relative;
-    padding: 1em;
-}
-.gallery-list{
-cursor: pointer;
-border: unset;
-flex-direction: inherit;
-}
-.gallery-img,.gallery-list .card-body {
-    width: calc(50%)
-}
-.gallery-img img{
-    border-radius: 5px;
-    min-height: 50vh;
-    max-width: calc(100%);
-}
-span.hightlight{
-    background: yellow;
-}
-.carousel,.carousel-inner,.carousel-item{
-   min-height: calc(100%)
-}
-header.masthead,header.masthead:before {
-        min-height: 50vh !important;
-        height: 50vh !important
-    }
-.row-items{
-    position: relative;
-}
-.masthead{
-        min-height: 23vh !important;
-        height: 23vh !important;
-    }
-     .masthead:before{
-        min-height: 23vh !important;
-        height: 23vh !important;
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    .head {
-        padding-top:7rem;
+    body {
+        background-color: #f8f9fa;
     }
 
-    .search_container { 
-    align-self:center;
-    padding: 0 15em;
+    header {
+        /* background: linear-gradient(to right, #4b6cb7, #182848); */
+        /* color: white; */
+        padding-top: 8rem ;
+        text-align: center;
     }
 
-    .card {
-        margin-top:5em;
+
+    .job-list {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin: 1rem auto;
+        max-width: 900px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .container1 {
-    padding:0;
-    margin:0 20em;
-    margin-bottom:5em;
-    display: flex;
-    gap:0.5em;  
-}
+    .job-list:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
 
-/* #filter {
-    width: 60%;
-} */
-.container1 .btn {
-    width: 20%;
-}
+    .job-list .card-body {
+        padding: 2rem;
+        text-align: left;
+    }
+
+    .job-list h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .job-list .filter-txt small {
+        font-size: 0.9rem;
+        color: #555;
+        display: inline-block;
+        margin-right: 1rem;
+    }
+
+    .job-list hr {
+        border-top: 1px solid #ddd;
+        margin: 1rem 0;
+    }
+
+    .job-list .badge {
+        background-color: #17a2b8;
+        color: white;
+        font-size: 0.8rem;
+        border-radius: 20px;
+    }
+
+    .job-list .btn {
+        background-color: #007bff;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .job-list .btn:hover {
+        background-color: #0056b3;
+    }
+
+    .search_container {
+        margin: 2rem auto;
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .search_container input {
+        flex: 1;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .search_container button {
+        padding: 0.8rem 1.5rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search_container button:hover {
+        background-color: #0056b3;
+    }
+
+    header .head h1 {
+        color: #4e73df;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
 </style>
+
 <header class="">
             <div class="head container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end mb-4 page-title">
-                        <h1 class="text-white">Job List</h1>
+                        <h1 class="mt-3 display-4 fw-bold">Job Opportunities</h1>
+                        <p>Find the perfect role for you!</p>
+                        <!-- <hr class="divider my-4" /> -->
+
                     <div class="col-md-12 mb-2 justify-content-center">
                     </div>                        
                     </div>
@@ -87,98 +136,43 @@ header.masthead,header.masthead:before {
                 </div>
             </div>
         </header>
+<!-- <header>
+    <h1 class="head display-4 fw-bold">Job Opportunities</h1>
+    <p>Find the perfect role for you!</p>
+</header> -->
 
-        
-		            
-<!-- <div class="container1"> -->
-    <!-- <div class="card mb-4"> -->
-        <!-- <div class="card-body"> -->
-            <!-- <div class="input-group mb-8"> -->
-                <!-- <div class="col-md-8"> -->
-                    <!-- <div class="input-group mb-3"> -->
-                      <!-- <div class="input-group-prepend">
-                        <span class="input-group-text" id="filter-field"><i class="fa fa-search"></i></span>
-                      </div>
-                      <input type="text" class="form-control" id="filter" placeholder="Filter" aria-label="Filter" aria-describedby="filter-field">
-                    </div> -->
-                <!-- </div> -->
-                <!-- <div class="col-md-4"> -->
-                    <!-- <button class="btn btn-primary btn-block btn-sm" id="search">Search</button>
-                </div>
-            </div>
-            
-        </div>
-    </div>  -->
-<!--         
-<div class="container mt-3 pt-2">
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="filter-field"><i class="fa fa-search"></i></span>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Filter" id="filter" aria-label="Filter" aria-describedby="filter-field">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <button class="btn btn-primary btn-block btn-sm" id="search">Search</button>
-                </div>
-            </div>
-            
-        </div>
-    </div>  -->
-   <?php
-    $event = $conn->query("SELECT c.*,u.name from careers c inner join users u on u.id = c.user_id order by id desc");
-    while($row = $event->fetch_assoc()):
-        $trans = get_html_translation_table(HTML_ENTITIES,ENT_QUOTES);
-        unset($trans["\""], $trans["<"], $trans[">"], $trans["<h2"]);
-        $desc = strtr(html_entity_decode($row['description']),$trans);
-        $desc=str_replace(array("<li>","</li>"), array("",","), $desc);
-    ?>
+<div class="search_container">
+    <input type="text" id="filter" placeholder="Search for jobs, companies, or locations...">
+    <button id="search">Search</button>
+</div>
 
-    <style>
-        .job-list {
-            margin: 1em 10em;
-        }
-    </style>
+<?php
+$event = $conn->query("SELECT c.*, u.name FROM careers c INNER JOIN users u ON u.id = c.user_id ORDER BY id DESC");
+while ($row = $event->fetch_assoc()):
+    $trans = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
+    unset($trans["\""], $trans["<"], $trans[">"], $trans["<h2"]);
+    $desc = strtr(html_entity_decode($row['description']), $trans);
+    $desc = str_replace(["<li>", "</li>"], ["", ","], $desc);
+?>
     <div class="card job-list" data-id="<?php echo $row['id'] ?>">
         <div class="card-body">
-            <div class="row  align-items-center justify-content-center text-center h-100">
-                <div class="p-4">
-                    <h3><b class="filter-txt"><?php echo ucwords($row['job_title']) ?></b></h3>
-                    <div>
-                    <span class="filter-txt"><small><b><i class="fa fa-building"></i> <?php echo ucwords($row['company']) ?></b></small></span>
-                    <span class="filter-txt"><small><b><i class="fa fa-map-marker"></i> <?php echo ucwords($row['location']) ?></b></small></span>
-                    </div>
-                    <hr>
-                    <larger class="truncate filter-txt"><?php echo strip_tags($desc) ?></larger>
-                    <br>
-                    <!-- <hr class="divider"  style="max-width: calc(80%)"> -->
-                    <span class="badge badge-info float-left px-3 pt-1 pb-1">
-                        <b><i>Posted by: <?php echo $row['name'] ?></i></b>
-                    </span>
-                    <button class="btn btn-primary float-right read_more" data-id="<?php echo $row['id'] ?>">Read More</button>
-                </div>
+            <h3><b class="filter-txt"><?php echo ucwords($row['job_title']) ?></b></h3>
+            <div>
+                <small class="filter-txt"><b><i class="fa fa-building"></i> <?php echo ucwords($row['company']) ?></b></small>
+                <small class="filter-txt"><b><i class="fa fa-map-marker"></i> <?php echo ucwords($row['location']) ?></b></small>
             </div>
-            
-
+            <hr>
+            <p class="truncate filter-txt"><?php echo strip_tags($desc) ?></p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <span class="badge"><b>Posted by: <?php echo $row['name'] ?></b></span>
+                <button class="btn btn-primary read_more" data-id="<?php echo $row['id'] ?>">Read More</button>
+            </div>
         </div>
     </div>
-    <br>
-    <?php endwhile; ?>
-    
-</div>
-    
-</div>
-
+<?php endwhile; ?>
 
 <script>
-    // $('.card.gallery-list').click(function(){
-    //     location.href = "index.php?page=view_gallery&id="+$(this).attr('data-id')
-    // })
-    $('#new_career').click(function(){
+$('#new_career').click(function(){
         uni_modal("New Job Hiring","manage_career.php",'mid-large')
     })
     $('.read_more').click(function(){
