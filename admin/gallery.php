@@ -104,6 +104,9 @@
 </div>
 
 <style>
+    .btn {
+        border-radius: 0.3rem;
+    }
     td {
         vertical-align: middle !important;
     }

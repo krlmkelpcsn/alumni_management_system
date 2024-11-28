@@ -2,6 +2,9 @@
 include 'admin/db_connect.php'; 
 ?>
 <style>
+    * {
+        font-family:system-ui;
+    }
     .masthead{
         min-height: 23vh !important;
         height: 23vh !important;
@@ -17,21 +20,114 @@ include 'admin/db_connect.php';
     .head {
         padding-top:7rem;
     }
-    
-</style>
-<header class="">
-    <div class="head container-fluid h-100">
-        <div id="hero" class="row h-100 align-items-center justify-content-center text-center">
-            <div class="col-lg-8 align-self-end mb-4 page-title">
-                <h2 class="text-white">Create Account</h2>
-            <div class="col-md-12 mb-2 justify-content-center">
-            </div>                        
-            </div>
+    .about-header {
+            margin-top:6em;
+            /* background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/home-background.webp') no-repeat center center/cover; */
             
+        }
+        .about-header h1 {
+            color: #4e73df;
+            font-size: 2.5rem;
+            /* margin-bottom: 1rem;
+            font-weight: 700; */
+        }
+        .about-header p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .container input, .container button {
+            border-radius: 8px;
+        }
+</style>
+<div class="about-header text-center py-5" style="">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Sign Up</h1>
+        
+    </div>
+    </div>
+
+    <div class="container mb-5">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white text-center">
+                <h4>Create an Account</h4>
+            </div>
+            <div class="card-body">
+                <form action="" id="create_account" novalidate>
+                    <!-- Name Fields -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter last name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter first name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="middlename" class="form-label">Middle Name</label>
+                            <input type="text" class="form-control" id="middlename" name="middlename" placeholder="Enter middle name">
+                        </div>
+                    </div>
+
+                    <!-- Gender and Batch -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label for="gender" class="form-label">Gender</label>
+                            <br>
+                            <select class="form-select" id="gender" name="gender" required>
+                                <option selected disabled>Choose...</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="course_id" class="form-label">Batch</label>
+                            <br>
+                            <select class="form-select" id="course_id" name="course_id" required>
+                                <option selected disabled>Choose...</option>
+                                <?php 
+                                $course = $conn->query("SELECT * FROM courses order by course asc");
+                                while($row=$course->fetch_assoc()): ?>
+                                    <option value="<?php echo $row['id'] ?>"><?php echo $row['course'] ?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="occupation" class="form-label">Occupation</label>
+                            <input type="text" class="form-control" id="occupation" name="connected_to" placeholder="Enter occupation">
+                        </div>
+                    </div>
+
+                    <!-- Image Upload, Email, and Password -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label for="img" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="img" name="img" onchange="displayImg(this, $(this))">
+                            <img src="" alt="Preview" id="cimg" class="img-fluid mt-2 rounded d-none">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center mt-4">
+                        <button type="submit" id="submit" class="btn btn-primary px-4 ">Sign Up</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</header>
-    <div class="container mt-3 pt-2">
+</div>
+
+    <!-- <div class="container mt-3 pt-2">
         <div class="col-lg-12">
             <div class="card mb-4">
                 <div class="card-body">
@@ -60,10 +156,10 @@ include 'admin/db_connect.php';
                                             <option>Female</option>
                                         </select>
                                     </div>
-                                        <!-- <div class="col-md-4">
+                                        <div class="col-md-4">
                                             <label for="" class="control-label">Batch</label>
                                             <input type="input" class="form-control datepickerY" name="batch" required>
-                                        </div> -->
+                                        </div>
                                     <div class="col-md-4">
                                         <label for="" class="control-label">Batch</label>
                                         <select class="custom-select select2" name="course_id" required>
@@ -105,7 +201,7 @@ include 'admin/db_connect.php';
                                 
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <button id="submit" class="btn btn-primary">Create Account</button>
+                                        <button id="submit" class="btn btn-primary">Sign Up</button>
                                     </div>
                                 </div>
                             </form>
@@ -114,7 +210,7 @@ include 'admin/db_connect.php';
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 <script>
@@ -128,7 +224,7 @@ include 'admin/db_connect.php';
    $('.select2').select2({
     placeholder:"Please Select Here",
     width:"100%"
-   })
+   });
    function displayImg(input,_this) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -154,8 +250,8 @@ $('#create_account').submit(function(e){
             if(resp == 1){
                 location.replace('index.php')
             }else{
-                $('#msg').html('<div class="alert alert-danger">email already exist.</div>')
-                end_load()
+                alert_toast("Data created successfully ", 'success');
+                setTimeout(() => location.reload(), 1500);
             }
         }
     })

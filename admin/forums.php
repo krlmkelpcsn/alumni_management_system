@@ -22,6 +22,7 @@
             white-space: nowrap;
         }
         .btn {
+            border-radius: 0.3rem;
             font-size: 0.9rem;
         }
     </style>

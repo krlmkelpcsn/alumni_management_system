@@ -80,37 +80,11 @@ include 'admin/db_connect.php';
     .job-list .btn:hover {
         background-color: #0056b3;
     }
-
-    .search_container {
-        margin: 2rem auto;
-        max-width: 900px;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
+    .search_container { 
+    align-self:center;
+    padding: 0 15em;
     }
 
-    .search_container input {
-        flex: 1;
-        padding: 0.8rem 1rem;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 1rem;
-    }
-
-    .search_container button {
-        padding: 0.8rem 1.5rem;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .search_container button:hover {
-        background-color: #0056b3;
-    }
 
     header .head h1 {
         color: #4e73df;
@@ -120,6 +94,7 @@ include 'admin/db_connect.php';
     }
 
 </style>
+<div class="container pt-4">
 
 <header class="">
             <div class="head container-fluid h-100">
@@ -141,10 +116,15 @@ include 'admin/db_connect.php';
     <p>Find the perfect role for you!</p>
 </header> -->
 
-<div class="search_container">
-    <input type="text" id="filter" placeholder="Search for jobs, companies, or locations...">
-    <button id="search">Search</button>
-</div>
+<div class="search_container d-flex justify-content-center mb-5">
+        <div class="input-group" style="width: 60%;">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" id="filter" placeholder="Search for jobs, companies, or locations..." aria-label="Filter">
+            <button class="btn btn-primary ml-2" id="search">Search</button>
+        </div>
+    </div>
 
 <?php
 $event = $conn->query("SELECT c.*, u.name FROM careers c INNER JOIN users u ON u.id = c.user_id ORDER BY id DESC");
@@ -170,6 +150,7 @@ while ($row = $event->fetch_assoc()):
         </div>
     </div>
 <?php endwhile; ?>
+</div>
 
 <script>
 $('#new_career').click(function(){

@@ -250,7 +250,7 @@ span.hightlight{
 
 
     <div  class="container pt-4 ">
-      <h2 class="text-center mb-4">Upcoming Events</h2>
+      <h2 class="text-center mb-4">Events</h2>
 <div class="row-items">
             <div class="row">
               

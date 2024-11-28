@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
 	<p>We will contact you soon for the verification of your registration request. Thank you</p>
 </div>

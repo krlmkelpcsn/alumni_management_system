@@ -107,7 +107,7 @@ a.jqte_tool_label.unselectable {
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container d-flex justify-content-between align-items-center">
               <img src="img/logo.jpg" alt="logo" class=logo>
-                <a class="navbar-brand js-scroll-trigger" href="./"><?php echo $_SESSION['system']['name'] ?></a>
+                <a class="navbar-brand js-scroll-trigger " href="./"><?php echo $_SESSION['system']['name'] ?></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">  
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
@@ -124,7 +124,7 @@ a.jqte_tool_label.unselectable {
                         <?php endif; ?>
                         
                         <?php if(!isset($_SESSION['login_id'])): ?>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger " href="#" id="login">Login</a></li>
                         <?php else: ?>
                         <li class="nav-item">
                           <div class=" dropdown mr-4">
@@ -201,19 +201,20 @@ a.jqte_tool_label.unselectable {
   </div>
   <div id="preloader"></div>
 
-<footer class="bg-dark text-light py-5 d-flex justify-content-between">
+<footer class="bg-dark text-light py-4 mt-1 d-flex justify-content-between">
     <div class="container">
         <div class="row">
             <!-- About Section -->
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mt-1">
                 <h5 class="fw-bold text-uppercase">About Us</h5>
                 <p class="small">
-                    The Alumni Management System is designed to connect graduates with their alma mater. Stay in touch, share your experiences, and contribute to the community.
-                </p>
+                The Alumni Management System is designed to connect graduates of 
+            <strong>San Pedro National High School</strong> with their alma mater. 
+            Stay in touch, share your experiences, and contribute to the vibrant alumni community.                </p>
             </div>
 
             <!-- Quick Links -->
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mt-1">
                 <h5 class="fw-bold text-uppercase">Quick Links</h5>
                 <ul class="list-unstyled">
                     <li><a href="{{ url('/') }}" class="text-light text-decoration-none">Home</a></li>
@@ -224,7 +225,7 @@ a.jqte_tool_label.unselectable {
             </div>
 
             <!-- Contact Info -->
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mt-1">
                 <h5 class="fw-bold text-uppercase">Contact Us</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:spnh@alumni.com" class="text-light text-decoration-none">spnh@alumni.com</a></li>
@@ -261,7 +262,7 @@ a.jqte_tool_label.unselectable {
       // document.querySelector('.btn').onclick
 
       $('#login').click(function(){
-        uni_modal("Login",'login.php')
+        uni_modal("",'login.php')
       })
     </script>
     <?php $conn->close() ?>

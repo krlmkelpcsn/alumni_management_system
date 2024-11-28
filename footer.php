@@ -138,5 +138,5 @@ window.alert_toast= function($msg = 'TEST',$bg = 'success'){
         <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
         <!-- Core theme JS-->
 
-
-        <script src="js/scripts.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=location_on" />
+                        <script src="js/scripts.js"></script>

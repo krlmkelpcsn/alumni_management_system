@@ -145,7 +145,7 @@ input {
 		<form id="login-form" >
 			<div class="head">
 				<img src="assets/img/logo.jpg" alt="login-logo">
-				<h2>LOGIN</h2>
+				<h2>SPNH</h2>
 			</div>
 			<div class="form-group">
 				<label for="username" class="control-label">Username</label>

@@ -13,7 +13,9 @@
         }
         .btn {
             font-size: 0.9rem;
+            border-radius: 0.3rem;
         }
+        
     </style>
 
     <div class="col-lg-12">

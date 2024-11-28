@@ -7633,6 +7633,12 @@ button.bg-dark:focus {
   margin-bottom: 3rem !important;
 }
 
+.mb-6,
+.my-6 {
+  margin-bottom: 6rem !important;
+}
+
+
 .ml-5,
 .mx-5 {
   margin-left: 3rem !important;
@@ -10221,7 +10227,7 @@ header.masthead h1 {
 }
 nav#mainNav {
   background-color: #1633d7;
-    color: white !important;
+    /* color: white !important; */
 }
 .align-self-end.mb-4.page-title {
     border-radius: 15px;

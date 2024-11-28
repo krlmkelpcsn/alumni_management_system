@@ -1,4 +1,27 @@
 <?php session_start() ?>
+<!-- <div class="container d-flex justify-content-center align-items-center vh-100"> -->
+    <!-- <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;"> -->
+        <h3 class="text-center mb-4 text-primary">Login</h3>
+        <form action="" id="login-frm" novalidate>
+            <!-- Email Field -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="username" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <!-- Password Field -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                <small>
+                    <a href="index.php?page=signup" id="new_account" class="text-decoration-none">Create New Account</a>
+                </small>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+    </div>
+</div>
+<!-- 
 <div class="container-fluid ">
 	<form action="" id="login-frm">
 		<div class="form-group">
@@ -12,7 +35,7 @@
 		</div>
 		<button class="button btn btn-primary btn-md ">Login</button>
 	</form>
-</div>
+</div> -->
 
 <style>
 	#uni_modal .modal-footer{

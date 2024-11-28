@@ -73,8 +73,15 @@ header.masthead,header.masthead:before {
 .container1 .btn {
     width: 20%;
 }
+header .head h1 {
+        color: #4e73df;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
 </style>
-<header class="">
+<!-- <header class="">
             <div class="head container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end mb-4 page-title">
@@ -87,7 +94,7 @@ header.masthead,header.masthead:before {
                     
                 </div>
             </div>
-        </header>
+        </header> -->
 
         
 <!-- <header class="masthead">
@@ -106,82 +113,107 @@ header.masthead,header.masthead:before {
 </header> -->
 
 
-		            
-<div class="container1">
-    <!-- <div class="card mb-4"> -->
-        <!-- <div class="card-body"> -->
-            <div class="input-group mb-8">
-                <!-- <div class="col-md-8"> -->
-                    <!-- <div class="input-group mb-3"> -->
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="filter-field"><i class="fa fa-search"></i></span>
-                      </div>
-                      <input type="text" class="form-control" id="filter" placeholder="Filter" aria-label="Filter" aria-describedby="filter-field">
+<div class="container pt-4">
+    <!-- <header class="text-center mb-5">
+        <h1 class="text-dark">Forum List</h1>
+    </header> -->
+
+    <header class="">
+            <div class="head container-fluid h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end mb-4 page-title">
+                    <h1 class="mt-3 display-4 fw-bold">Forum List</h1>
+                    <div class="col-md-12 mb-2 justify-content-center">
+                    </div>                        
                     </div>
-                <!-- </div> -->
-                <!-- <div class="col-md-4"> -->
-                    <button class="btn btn-primary btn-block btn-sm" id="search">Search</button>
+                    
                 </div>
             </div>
-            
-        </div>
-    </div> 
-   <?php
-    $event = $conn->query("SELECT f.*,u.name from forum_topics f inner join users u on u.id = f.user_id order by f.id desc");
-    while($row = $event->fetch_assoc()):
-        $trans = get_html_translation_table(HTML_ENTITIES,ENT_QUOTES);
-        unset($trans["\""], $trans["<"], $trans[">"], $trans["<h2"]);
-        $desc = strtr(html_entity_decode($row['description']),$trans);
-        $desc=str_replace(array("<li>","</li>"), array("",","), $desc);
-        $count_comments=0;
-        $count_comments = $conn->query("SELECT * FROM forum_comments where topic_id = ".$row['id'])->num_rows;
-    ?>
+        </header>
 
-    <style>
-        .Forum-list {
-            margin:5em 10em;
-        }
-    </style>
-    <div class="card Forum-list" data-id="<?php echo $row['id'] ?>">
-        <div class="card-body">
-            <div class="row  align-items-center justify-content-center text-center h-100">
-                <div class="">
-                    <?php if($_SESSION['login_id'] == $row['user_id']): ?>
-                    <div class="dropdown float-right mr-4">
-                      <a class="text-dark" href="javascript:void(0)" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="fa fa-ellipsis-v"></span>
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item edit_forum" data-id="<?php echo $row['id'] ?>" href="javascript:void(0)">Edit</a>
-                        <a class="dropdown-item delete_forum" data-id="<?php echo $row['id'] ?>" href="javascript:void(0)">Delete</a>
-                      </div>
-                    </div>
-                    <?php endif; ?>
-                    <h3><b class="filter-txt"><?php echo ucwords($row['title']) ?></b></h3>
-                    <hr>
-                    <larger class="truncate filter-txt"><?php echo strip_tags($desc) ?></larger>
-                    <br>
-                    <hr class="divider"  style="max-width: calc(80%)">
-                    <span class="badge badge-info float-left px-3 pt-1 pb-1">
-                        <b><i>Topic Created by: <span class="filter-txt"><?php echo $row['name'] ?></span></i></b>
-                    </span>
-                     <span class="badge badge-secondary float-left px-3 pt-1 pb-1 ml-2">
-                        <b><i class="fa fa-comments"></i> <i><?php echo $count_comments ?> Comments</i></b>
-                    </span>
-                    <button class="btn btn-primary float-right view_topic" data-id="<?php echo $row['id'] ?>">View Topic</button>
-                </div>
+    <div class="search_container d-flex justify-content-center mb-5">
+        <div class="input-group" style="width: 60%;">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
             </div>
-            
-
+            <input type="text" class="form-control" id="filter" placeholder="Search topics..." aria-label="Filter">
+            <button class="btn btn-primary ml-2" id="search">Search</button>
         </div>
     </div>
-    <br>
-    <?php endwhile; ?>
-    
-</div>
-    
+
+    <div class="row mb-6" >
+        <?php
+        $event = $conn->query("SELECT f.*,u.name FROM forum_topics f INNER JOIN users u ON u.id = f.user_id ORDER BY f.id DESC");
+        while ($row = $event->fetch_assoc()):
+            $trans = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
+            unset($trans["\""], $trans["<"], $trans[">"], $trans["<h2"]);
+            $desc = strtr(html_entity_decode($row['description']), $trans);
+            $desc = str_replace(array("<li>", "</li>"), array("", ","), $desc);
+            $count_comments = $conn->query("SELECT * FROM forum_comments WHERE topic_id = ".$row['id'])->num_rows;
+        ?>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title text-primary"><?php echo ucwords($row['title']); ?></h5>
+                        <?php if ($_SESSION['login_id'] == $row['user_id']): ?>
+                        <div class="dropdown">
+                            <a href="#" class="text-dark" id="dropdownMenuButton" data-toggle="dropdown">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item edit_forum" data-id="<?php echo $row['id']; ?>" href="#">Edit</a>
+                                <a class="dropdown-item delete_forum" data-id="<?php echo $row['id']; ?>" href="#">Delete</a>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <p class="text-muted mb-2"><i class="fa fa-user"></i> Created by: <b><?php echo $row['name']; ?></b></p>
+                    <p class="text-muted"><i class="fa fa-comments"></i> <?php echo $count_comments; ?> Comments</p>
+                    <hr>
+                    <p class="card-text text-truncate" style="height: 60px; overflow: hidden;"><?php echo strip_tags($desc); ?></p>
+                    <button class="btn btn-primary btn-sm float-right view_topic" data-id="<?php echo $row['id']; ?>">View Topic</button>
+                </div>
+            </div>
+        </div>
+        <?php endwhile; ?>
+    </div>
 </div>
 
+
+
+<style>
+    hr {
+        border-top: 1px solid #ddd;
+        margin: 1rem 0;
+    }
+    .card {
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        margin-top:0;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn {
+        border-radius: 4px;
+    }
+
+    .text-primary {
+        font-weight: bold;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .text-muted {
+        font-size: 0.85rem;
+    }
+</style>
 
 <script>
     // $('.card.gallery-list').click(function(){

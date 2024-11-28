@@ -7,6 +7,10 @@ include 'admin/db_connect.php';
  }
 ?>
 <style>
+
+* {
+        font-family:system-ui;
+    }
 #portfolio .img-fluid{
     width: calc(100%);
     height: 30vh;
@@ -40,37 +44,102 @@ header.masthead,header.masthead:before {
 .row-items{
     position: relative;
 }
-.masthead{
-        min-height: 23vh !important;
-        height: 23vh !important;
-    }
-     .masthead:before{
-        min-height: 23vh !important;
-        height: 23vh !important;
+
+header .head h1 {
+        color: #4e73df;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
     }
 
+    .head {
+        padding-top:7rem;
+    }
+
+
+    .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.card-body {
+    background: #f8f9fc;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.comment {
+    background: #e9ecef;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #4e73df;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3751ab;
+}
+
+.dropdown-menu {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    color: #5a5c69;
+}
+
+textarea {
+    border: 1px solid #d1d3e2;
+    border-radius: 5px;
+    padding: 0.5rem;
+    resize: none;
+    font-size: 1rem;
+}
+    hr {
+        border-top: 1px solid #ddd;
+        margin: 1rem 0;
+    }
 </style>
-<header class="masthead">
-    <div class="container-fluid h-100">
-        <div class="row h-100 align-items-center justify-content-center text-center">
-            <div class="col-lg-8 align-self-end mb-4 page-title">
-                <h3 class="text-white"><?php echo $title ?></h3>
-                <hr class="divider my-4" />
-            <div class="row col-md-12 mb-2 justify-content-center">
-                   <span class="badge badge-primary px-3 pt-1 pb-1">
-                        <b><i>Topic Created by: <?php echo $name ?></i></b>
-                    </span>
-            </div>   
-            </div>
-            
-        </div>
-    </div>
-</header>
-<div class="container mt-3 pt-2">
+
+
+<div class="container  pt-3">
+    <header class="">
+                <div class="head container-fluid h-100">
+                    <div class="row h-100 align-items-center justify-content-center text-center">
+                        <div class="col-lg-8 align-self-end mb-4 page-title">
+                        <h1 class="mt-3 display-4 fw-bold">Forum List</h1>
+                        <span class="badge badge-primary px-3 pt-1 pb-1">
+                            <b><i>Topic Created by: <?php echo $name ?></i></b>
+                        </span>
+                        <div class="col-md-12 mb-2 justify-content-center">
+                        </div>                        
+                        </div>
+                        
+                    </div>
+                </div>
+            </header>
     <div class="card mb-4">
         <div class="card-body">
 	            <?php echo html_entity_decode($description) ?>
-        <hr class="divider">
+        <!-- <hr class="divider"> -->
         </div>
     </div>
   	<?php 
@@ -83,7 +152,7 @@ header.masthead,header.masthead:before {
     			<div class="row">
     				<h3><b> <i class="fa fa-comments"></i> <?php echo $comments->num_rows ?> Comments</b></h3>
     			</div>
-    			<hr class="divider" style="max-width: 100%">
+    			<!-- <hr class="divider" style="max-width: 100%"> -->
     			<?php 
     			while($row= $comments->fetch_assoc()):
     			?>
@@ -107,7 +176,7 @@ header.masthead,header.masthead:before {
     			</div>
     		<?php endwhile; ?>
     		</div>
-    			<hr class="divider" style="max-width: 100%">
+    			<!-- <hr> -->
     			<div class="col-lg-12">
     				<form action="" id="manage-comment">
     					<div class="form-group">

@@ -1,4 +1,4 @@
-<?php include 'db_connect.php'; ?>
+<!-- <?php include 'db_connect.php'; ?> -->
 
 <div class="container-fluid">
     <div class="row mb-3">
@@ -32,7 +32,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $type = ["", "Admin", "Staff", "Alumnus/Alumna"];
+                                    $type = ["", "Admin", "Staff", "Alumni"];
                                     $users = $conn->query("SELECT * FROM users ORDER BY name ASC");
                                     $i = 1;
                                     while ($row = $users->fetch_assoc()):
@@ -47,11 +47,11 @@
                                         </span>
                                     </td>
                                     <td class="text-center">
-                                        <button class="btn btn-sm btn-info edit_user" data-id="<?php echo $row['id']; ?>" title="Edit User">
-                                            <i class="fas fa-edit"></i>
+                                        <button class="btn btn-sm btn-warning edit_user" data-id="<?php echo $row['id']; ?>" title="Edit User">
+                                            <i class="fas fa-edit"></i>Edit
                                         </button>
                                         <button class="btn btn-sm btn-danger delete_user" data-id="<?php echo $row['id']; ?>" title="Delete User">
-                                            <i class="fas fa-trash-alt"></i>
+                                            <i class="fas fa-trash-alt"></i> Delete
                                         </button>
                                     </td>
                                 </tr>
@@ -81,47 +81,31 @@
 </style>
 
 <script>
-    $(document).ready(function() {
-        // Initialize DataTable with responsive settings
-        $('table').DataTable({
-            responsive: true,
-            autoWidth: false,
-            lengthChange: false,
-            pageLength: 10,
-            language: {
-                search: "Search users:"
-            }
-        });
+	$('table').dataTable();
+$('#new_user').click(function(){
+	uni_modal('Add User Account','manage_user.php')
+})
+$('.edit_user').click(function(){
+	uni_modal('Edit User','manage_user.php?id='+$(this).attr('data-id'))
+})
+$('.delete_user').click(function(){
+		_conf("Are you sure to delete this user?","delete_user",[$(this).attr('data-id')])
+	})
+	function delete_user($id){
+		start_load()
+		$.ajax({
+			url:'ajax.php?action=delete_user',
+			method:'POST',
+			data:{id:$id},
+			success:function(resp){
+				if(resp==1){
+					alert_toast("Data successfully deleted",'success')
+					setTimeout(function(){
+						location.reload()
+					},1500)
 
-        // New User Modal
-        $('#new_user').click(function() {
-            uni_modal('New User', 'manage_user.php');
-        });
-
-        // Edit User Modal
-        $('.edit_user').click(function() {
-            uni_modal('Edit User', 'manage_user.php?id=' + $(this).attr('data-id'));
-        });
-
-        // Delete User Confirmation
-        $('.delete_user').click(function() {
-            _conf("Are you sure you want to delete this user?", "delete_user", [$(this).attr('data-id')]);
-        });
-    });
-
-    // Function to Delete User
-    function delete_user(id) {
-        start_load();
-        $.ajax({
-            url: 'ajax.php?action=delete_user',
-            method: 'POST',
-            data: { id: id },
-            success: function(resp) {
-                if (resp == 1) {
-                    alert_toast("User successfully deleted", 'success');
-                    setTimeout(() => location.reload(), 1500);
-                }
-            }
-        });
-    }
+				}
+			}
+		})
+	}
 </script>

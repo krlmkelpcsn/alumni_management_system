@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card shadow-sm border-0">
                     <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0"><i class="bx bx-user"></i> Alumni Directory</h4>
+                        <h4 class="mb-0"><i class="bx bx-user"></i> Alumni Management</h4>
                         <!-- <a class="btn btn-light btn-sm" href="index.php?page=manage_alumni" id="new_alumni">
                             <i class="fas fa-plus"></i> Add
                         </a> -->
@@ -72,6 +72,9 @@
 </div>
 
 <style>
+    .btn {
+        border-radius: 0.3rem;
+    }
     td {
         vertical-align: middle !important;
     }
@@ -93,28 +96,28 @@
 </style>
 
 <script>
-    $(document).ready(function() {
-        // Initialize DataTable
-        $('table').DataTable({
-            responsive: true,
-            autoWidth: false,
-            lengthChange: false,
-            pageLength: 10,
-            language: {
-                search: "Search alumni:"
-            }
-        });
+    // $(document).ready(function() {
+    //     // Initialize DataTable
+    //     $('table').DataTable({
+    //         responsive: true,
+    //         autoWidth: false,
+    //         lengthChange: false,
+    //         pageLength: 10,
+    //         language: {
+    //             search: "Search alumni:"
+    //         }
+    //     });
 
         // View Alumni Button Click
         $('.view_alumni').click(function() {
-            uni_modal("Alumni Bio", "view_alumni.php?id=" + $(this).attr('data-id'), 'mid-large');
+            uni_modal("Account Information", "view_alumni.php?id=" + $(this).attr('data-id'), 'mid-large');
         });
 
         // Delete Alumni Button Click
         $('.delete_alumni').click(function() {
             _conf("Are you sure you want to delete this alumni?", "delete_alumni", [$(this).attr('data-id')]);
         });
-    });
+
 
     // Function to Delete Alumni
     function delete_alumni(id) {

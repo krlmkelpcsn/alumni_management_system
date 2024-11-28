@@ -15,27 +15,42 @@ Class Action {
 	    ob_end_flush();
 	}
 
-	function login(){
+	// function login(){
 		
-			extract($_POST);		
-			$qry = $this->db->query("SELECT * FROM users where username = '".$username."' and password = '".md5($password)."' ");
-			if($qry->num_rows > 0){
-				foreach ($qry->fetch_array() as $key => $value) {
-					if($key != 'passwors' && !is_numeric($key))
-						$_SESSION['login_'.$key] = $value;
-				}
-				if($_SESSION['login_type'] != 1){
-					foreach ($_SESSION as $key => $value) {
-						unset($_SESSION[$key]);
-					}
-					return 2 ;
-					exit;
-				}
-					return 1;
-			}else{
-				return 3;
+	// 		extract($_POST);		
+	// 		$qry = $this->db->query("SELECT * FROM users where username = '".$username."' and password = '".md5($password)."' ");
+	// 		if($qry->num_rows > 0){
+	// 			foreach ($qry->fetch_array() as $key => $value) {
+	// 				if($key != 'passwors' && !is_numeric($key))
+	// 					$_SESSION['login_'.$key] = $value;
+	// 			}
+	// 			if($_SESSION['login_type'] != 1){
+	// 				foreach ($_SESSION as $key => $value) {
+	// 					unset($_SESSION[$key]);
+	// 				}
+	// 				return 2 ;
+	// 				exit;
+	// 			}
+	// 				return 1;
+	// 		}else{
+	// 			return 3;
+	// 		}
+	// }
+
+	function login(){
+		extract($_POST);
+		$qry = $this->db->query("SELECT * FROM users where username = '".$username."' and password = '".$password."' ");
+		if($qry->num_rows > 0){
+			foreach ($qry->fetch_array() as $key => $value) {
+				if($key != 'passwors' && !is_numeric($key))
+					$_SESSION['login_'.$key] = $value;
 			}
+				return 1;
+		}else{
+			return 3;
+		}
 	}
+	
 	function login2(){
 		
 			extract($_POST);
@@ -83,21 +98,36 @@ Class Action {
 		header("location:../index.php");
 	}
 
+	// function save_user(){
+	// 	extract($_POST);
+	// 	$data = " name = '$name' ";
+	// 	$data .= ", username = '$username' ";
+	// 	if(!empty($password))
+	// 	$data .= ", password = '".md5($password)."' ";
+	// 	$data .= ", type = '$type' ";
+	// 	if($type == 1)
+	// 		$establishment_id = 0;
+	// 	$data .= ", establishment_id = '$establishment_id' ";
+	// 	$chk = $this->db->query("Select * from users where username = '$username' and id !='$id' ")->num_rows;
+	// 	if($chk > 0){
+	// 		return 2;
+	// 		exit;
+	// 	}
+	// 	if(empty($id)){
+	// 		$save = $this->db->query("INSERT INTO users set ".$data);
+	// 	}else{
+	// 		$save = $this->db->query("UPDATE users set ".$data." where id = ".$id);
+	// 	}
+	// 	if($save){
+	// 		return 1;
+	// 	}
+	// }
 	function save_user(){
 		extract($_POST);
 		$data = " name = '$name' ";
 		$data .= ", username = '$username' ";
-		if(!empty($password))
-		$data .= ", password = '".md5($password)."' ";
+		$data .= ", password = '$password' ";
 		$data .= ", type = '$type' ";
-		if($type == 1)
-			$establishment_id = 0;
-		$data .= ", establishment_id = '$establishment_id' ";
-		$chk = $this->db->query("Select * from users where username = '$username' and id !='$id' ")->num_rows;
-		if($chk > 0){
-			return 2;
-			exit;
-		}
 		if(empty($id)){
 			$save = $this->db->query("INSERT INTO users set ".$data);
 		}else{
@@ -107,6 +137,7 @@ Class Action {
 			return 1;
 		}
 	}
+	
 	function delete_user(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM users where id = ".$id);
