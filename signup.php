@@ -119,7 +119,7 @@ include 'admin/db_connect.php';
 
                     <!-- Submit Button -->
                     <div class="text-center mt-4">
-                        <button type="submit" id="submit" class="btn btn-primary px-4 ">Sign Up</button>
+                        <button type="submit" id="submit" href="index.php?page=login" class="btn btn-primary px-4 ">Sign Up</button>
                     </div>
                 </form>
             </div>
