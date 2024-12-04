@@ -124,7 +124,7 @@ a.jqte_tool_label.unselectable {
                         <?php endif; ?>
                         
                         <?php if(!isset($_SESSION['login_id'])): ?>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger " href="#" id="login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger " href="index.php?page=login" id="">Login</a></li>
                         <?php else: ?>
                         <li class="nav-item">
                           <div class=" dropdown mr-4">
