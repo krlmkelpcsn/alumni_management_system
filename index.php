@@ -107,19 +107,19 @@ a.jqte_tool_label.unselectable {
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container d-flex justify-content-between align-items-center">
               <img src="img/logo.jpg" alt="logo" class=logo>
-                <a class="navbar-brand js-scroll-trigger " href="./"><?php echo $_SESSION['system']['name'] ?></a>
+                <a class="navbar-brand js-scroll-trigger " href=""> SPNHS</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">  
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home">Home</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=gallery">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=careers">Jobs</a></li>
                         <?php if(isset($_SESSION['login_id'])): ?>
+                          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=careers">Jobs</a></li>
                           <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=alumni_list">Alumni</a></li> -->
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=forum">Forums</a></li>
                         <li class="nav-item">
-                    <a class="btn  nav-link js-scroll-trigger" href="admin/index.php?page=home" target="_blank">Post</a>
+                    <!-- <a class="btn  nav-link js-scroll-trigger" href="admin/index.php?page=home" target="_blank">Post</a> -->
                 </li> 
                         <?php endif; ?>
                         
@@ -228,7 +228,7 @@ a.jqte_tool_label.unselectable {
             <div class="col-md-4 mt-1">
                 <h5 class="fw-bold text-uppercase">Contact Us</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:spnh@alumni.com" class="text-light text-decoration-none">spnh@alumni.com</a></li>
+                    <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:spnhs@alumni.com" class="text-light text-decoration-none">spnh@alumni.com</a></li>
                     <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i>+63 95 4567 7890</li>
                     <li><i class="bi bi-geo-alt-fill me-2"></i>San Pedro, Iriga City</li>
                 </ul>
