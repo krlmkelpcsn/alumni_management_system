@@ -39,7 +39,7 @@ h6 {
   		</div>
       <div class="col-md-4 float-left text-white d-flex">
       <img src="assets/img/logo.jpg" alt="logo" id=logo>
-      <h6 class='ml-3 mt-2'>Admin Panel</h6>
+      <h6 class='ml-3 mt-2'>SPNHS</h6>
       </div>
 	  	<div class="float-right mt-2 log">
                 <a class="text-white loglog" href="ajax.php?action=logout"><i class="fa fa-power-off"></i> Logout</a>
