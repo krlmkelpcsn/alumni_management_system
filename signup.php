@@ -40,7 +40,7 @@ include 'admin/db_connect.php';
             border-radius: 8px;
         }
 </style>
-<div class="about-header text-center py-5" style="">
+<div class="about-header text-center py-5" >
     <div class="container">
         <h1 class="display-4 fw-bold">Sign Up</h1>
         
