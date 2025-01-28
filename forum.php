@@ -81,43 +81,10 @@ header .head h1 {
     }
 
 </style>
-<!-- <header class="">
-            <div class="head container-fluid h-100">
-                <div class="row h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-8 align-self-end mb-4 page-title">
-                        <h1 class="text-white">Forum List</h1>
-                        
 
-                    <div class="col-md-12 mb-2 justify-content-center">
-                    </div>                        
-                    </div>
-                    
-                </div>
-            </div>
-        </header> -->
-
-        
-<!-- <header class="masthead">
-    <div class="container-fluid h-100">
-        <div class="row h-100 align-items-center justify-content-center text-center">
-            <div class="col-lg-8 align-self-end mb-4 page-title">
-                <h3 class="text-white">Forum List</h3>
-                <hr class="divider my-4" />
-            <div class="row col-md-12 mb-2 justify-content-center">
-                    <button class="btn btn-primary btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Create New Topic</button>
-            </div>   
-            </div>
-            
-        </div>
-    </div>
-</header> -->
 
 
 <div class="container pt-4">
-    <!-- <header class="text-center mb-5">
-        <h1 class="text-dark">Forum List</h1>
-    </header> -->
-
     <header class="">
             <div class="head container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
@@ -130,6 +97,13 @@ header .head h1 {
                 </div>
             </div>
         </header>
+        <?php if(isset($_SESSION['login_id'])): ?>
+    <div class="d-flex align-items-center justify-content-center">
+        <button class="btn btn-primary btn-md mb-5" type="button" id="new_forum">
+            <i class="fas fa-plus"></i> Add Forum
+        </button>
+        <?php endif; ?>
+    </div>
 
     <div class="search_container d-flex justify-content-center mb-5">
         <div class="input-group" style="width: 60%;">
@@ -219,9 +193,13 @@ header .head h1 {
     // $('.card.gallery-list').click(function(){
     //     location.href = "index.php?page=view_gallery&id="+$(this).attr('data-id')
     // })
-    $('#new_forum').click(function(){
-        uni_modal("New Topic","manage_forum.php",'mid-large')
-    })
+    // New Forum Button Click
+    $('#new_forum').click(function() {
+        uni_modal("New Forum Entry", "manage_forum.php", 'mid-large');
+    });
+    // $('#new_forum').click(function(){
+    //     uni_modal("New Topic","manage_forum.php",'mid-large')
+    // })
     $('.view_topic').click(function(){
        location.replace('index.php?page=view_forum&id='+$(this).attr('data-id'))
     })

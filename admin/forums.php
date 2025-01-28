@@ -58,6 +58,7 @@
                                         <th class="text-center">#</th>
                                         <th>Topic</th>
                                         <th>Description</th>
+                                        <th>Participated</th>
                                         <th class="text-center">Created</th>
                                         <!-- <th>Comments</th> -->
                                         <th class="text-center">Action</th>
@@ -72,12 +73,16 @@
                                         unset($trans["\""], $trans["<"], $trans[">"], $trans["<h2"]);
                                         $desc = strtr(html_entity_decode($row['description']), $trans);
                                         $desc = str_replace(["<li>", "</li>"], ["", ","], $desc);
+                                        $commits = $conn->query("SELECT * FROM forum_commits WHERE forum_id = " . $row['id'])->num_rows;
                                         $count_comments = $conn->query("SELECT * FROM forum_comments WHERE id = " . $row['id'])->num_rows;
                                     ?>
                                     <tr>
                                         <td class="text-center"><?php echo $i++; ?></td>
                                         <td><p><?php echo ucwords($row['title']); ?></p></td>
                                         <td><p class="truncate"><?php echo $desc; ?></p></td>
+                                        <td class="text-center">
+                                            <span class="badge bg-secondary text-white"><?php echo $commits; ?></span>
+                                        </td>
                                         <td class="text-center"><p class='badge bg-success text-white'><?php echo ucwords($row['name']); ?></p></td>
                                         <!-- <td class="text-center"><p class='badge bg-success text-white'><?php echo number_format($count_comments ); ?></p></td> -->
                                         <td class="text-center">

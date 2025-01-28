@@ -6,6 +6,20 @@ include 'admin/db_connect.php';
  		$$k = $v;
  }
 ?>
+<?php 
+if(isset($_GET['id'])){
+    $qry = $conn->query("SELECT * FROM forum_topics where id= ".$_GET['id']);
+    foreach($qry->fetch_array() as $k => $val){
+        $$k=$val;
+    }
+    
+     $commits = $conn->query("SELECT * FROM forum_commits where forum_id = $id");
+    $cids= array();
+    while($row = $commits->fetch_assoc()){
+        $cids[] = $row['user_id'];
+    }
+}
+    ?>
 <style>
 
 * {
@@ -140,6 +154,20 @@ textarea {
         <div class="card-body">
 	            <?php echo html_entity_decode($description) ?>
         <!-- <hr class="divider"> -->
+        <div class="row">
+					<div class="col-md-12 text-white">
+						<!-- <hr class="divider" style="max-width: calc(100%);"/> -->
+						<div class="text-center ">
+							<?php if(isset($_SESSION['login_id'])): ?>
+							<?php if(in_array($_SESSION['login_id'], $cids)): ?>
+								<span class="badge badge-primary">Commited to Participate</span>
+							<?php else: ?>
+								<button class="btn btn-primary" id="forum_participate" type="button">Participate</button>
+							<?php endif; ?>
+							<?php endif; ?>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
   	<?php 
@@ -197,6 +225,28 @@ textarea {
     // $('.card.gallery-list').click(function(){
     //     location.href = "index.php?page=view_gallery&id="+$(this).attr('data-id')
     // })
+    $('#forum_participate').click(function(){
+        _conf("Are you sure to commit that you will participate to this Topic?","forum_participate",[<?php echo $id ?>],'mid-large')
+    })
+
+    function forum_participate($id){
+        start_load()
+        $.ajax({
+            url:'admin/ajax.php?action=forum_participate',
+            method:'POST',
+            data:{event_id:$id},
+            success:function(resp){
+                if(resp==1){
+                    alert_toast("Data successfully saved",'success')
+                    setTimeout(function(){
+                        location.reload()
+                    },1500)
+
+                }
+            }
+        })
+    }
+
 	$('.jqte').jqte();
 
     $('#new_forum').click(function(){
