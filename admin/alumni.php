@@ -24,6 +24,7 @@
                                         <th class="text-center">#</th>
                                         <th>Avatar</th>
                                         <th>Name</th>
+                                        <th>Contact</th>
                                         <th>Batch</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
@@ -43,6 +44,7 @@
                                             </div>
                                         </td>
                                         <td><?php echo ucwords($row['name']); ?></td>
+                                        <td><?php echo htmlspecialchars($row['contact'])?></td>
                                         <td><?php echo $row['course']; ?></td>
                                         <td class="text-center">
                                             <?php if ($row['status'] == 1): ?>
