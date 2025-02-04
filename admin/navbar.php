@@ -97,16 +97,19 @@
         <a href="index.php?page=gallery" class="nav-item nav-gallery">
             <span class="icon-field"><i class="bx bx-image"></i></span> Gallery
         </a>
-        <a href="index.php?page=jobs" class="nav-item nav-jobs">
-            <span class="icon-field"><i class="bx bx-briefcase"></i></span> Jobs
-        </a>
-        <a href="index.php?page=events" class="nav-item nav-events">
-            <span class="icon-field"><i class="bx bx-grid"></i></span> Events
-        </a>
         <a href="index.php?page=forums" class="nav-item nav-forums">
             <span class="icon-field"><i class="bx bx-chat"></i></span> Forum
         </a>
+        <a href="index.php?page=announcement" class="nav-item nav-announcement">
+            <span class="icon-field"><i class="bx bx-chat"></i></span> Announcements
+        </a>
         <?php if ($_SESSION['login_type'] == 1): ?>
+            <a href="index.php?page=jobs" class="nav-item nav-jobs">
+                <span class="icon-field"><i class="bx bx-briefcase"></i></span> Jobs
+            </a>
+            <a href="index.php?page=events" class="nav-item nav-events">
+                <span class="icon-field"><i class="bx bx-grid"></i></span> Events
+            </a>
             <a href="index.php?page=alumni" class="nav-item nav-alumni">
                 <span class="icon-field"><i class="bx bx-user"></i></span> Alumni List
             </a>

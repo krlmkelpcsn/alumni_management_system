@@ -97,6 +97,22 @@ a.jqte_tool_label.unselectable {
   nav#mainNav {
     background: #1A535C;
   }
+
+  #mainNav .navbar-nav .nav-item .menu {
+    font-weight: 500;
+    font-size: small;
+  }
+.bg-name {
+    backdrop-filter: blur(8px) saturate(170%);
+    -webkit-backdrop-filter: blur(8px) saturate(170%);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    padding-right: 2.5em;
+    padding-left: 1.5em;
+    padding-top: 0.5em; 
+    padding-bottom: 0.5em;
+}
     </style>
     <body id="page-top">
         <!-- Navigation-->
@@ -104,40 +120,44 @@ a.jqte_tool_label.unselectable {
         <div class="toast-body text-white">
         </div>
       </div>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top " id="mainNav">
             <div class="container d-flex justify-content-between align-items-center">
               <img src="img/logo.jpg" alt="logo" class=logo>
-                <a class="navbar-brand js-scroll-trigger " href=""> SPNHS</a>
+                <a class="navbar-brand js-scroll-trigger" href="index.php?page=home">SPNHS</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">  
-                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=gallery">Gallery</a></li>
+                    <ul class="navbar-nav mr-auto ml-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link menu js-scroll-trigger" href="index.php?page=home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link menu js-scroll-trigger" href="index.php?page=about">About</a></li>
+                        <li class="nav-item"><a class="nav-link menu js-scroll-trigger" href="index.php?page=gallery">Gallery</a></li>
                         <?php if(isset($_SESSION['login_id'])): ?>
-                          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=careers">Jobs</a></li>
-                          <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=alumni_list">Alumni</a></li> -->
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=forum">Forums</a></li>
+                        <li class="nav-item"><a class="nav-link menu js-scroll-trigger" href="index.php?page=announcement">Announcements</a></li>
+                        <li class="nav-item"><a class="nav-link  menu js-scroll-trigger" href="index.php?page=careers">Jobs</a></li>
+                        <li class="nav-item"><a class="nav-link menu js-scroll-trigger" href="index.php?page=forum">Forums</a></li>
+                        <li class="nav-item"><a class="nav-link menu js-scroll-trigger" href="index.php?page=alumni_list">Alumni</a></li>
                         <li class="nav-item">
-                    <!-- <a class="btn  nav-link js-scroll-trigger" href="admin/index.php?page=home" target="_blank">Post</a> -->
+                    <a class="nav-link menu js-scroll-trigger" href="admin/index.php?page=home" target="_blank">Post</a>
                 </li> 
+                </ul> 
+                </div>
+            </div>
                         <?php endif; ?>
                         
-                        <?php if(!isset($_SESSION['login_id'])): ?>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger " href="index.php?page=login" id="">Login</a></li>
-                        <?php else: ?>
-                        <li class="nav-item">
-                          <div class=" dropdown mr-4">
-                              <!-- <a href="#" class="nav-link js-scroll-trigger"  id="account_settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['login_name'] ?> <i class="fa fa-angle-down"></i></a>
-                                <div class="dropdown-menu" aria-labelledby="account_settings" style="left: -2.5em;"> -->
-                                  <!-- <a class="dropdown-item" href="index.php?page=my_account" id="manage_my_account"><i class="fa fa-cog"></i> Manage Account</a> -->
-                                  <a class="text-white ml-5" href="admin/ajax.php?action=logout2"><i class="fa fa-power-off"></i> Logout</a>
-                                </div>
+                      </ul>
+                      <ul class="navbar-nav navbar-login px-4">
+                  <?php if(!isset($_SESSION['login_id'])): ?>
+                      <li class="nav-item bg-name" ><a class="nav-link js-scroll-trigger" href="index.php?page=login">Login</a></li>
+                  <?php else: ?>
+                      <li class="nav-item dropdown ">
+                          <a class="nav-link dropdown-toggle pr-5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <?php echo $_SESSION['login_name'] ?>
+                          </a>
+                          <div class="dropdown-menu mt-2 border-2" aria-labelledby="navbarDropdown">
+                              <!-- <a class="dropdown-item" href="index.php?page=my_account">Manage Account</a> -->
+                              <a class="dropdown-item" href="admin/ajax.php?action=logout2">Logout</a>
                           </div>
-                        </li>
-                        <?php endif; ?>              
-            </ul>
-        </div>
+                      </li>
+                  <?php endif; ?>
     </div>
 </nav>
         <?php 
