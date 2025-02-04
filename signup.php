@@ -54,74 +54,76 @@ include 'admin/db_connect.php';
                 <h4>Create an Account</h4>
             </div>
             <div class="card-body">
-                <form action="" id="create_account" novalidate>
-                    <!-- Name Fields -->
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-4">
-                            <label for="lastname" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter last name" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="firstname" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter first name" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="middlename" class="form-label">Middle Name</label>
-                            <input type="text" class="form-control" id="middlename" name="middlename" placeholder="Enter middle name">
-                        </div>
-                    </div>
+            <form action="" id="create_account" novalidate>
+    <!-- Name Fields -->
+    <div class="row g-4 mb-3">
+        <div class="col-md-3">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter last name" required>
+        </div>
+        <div class="col-md-3">
+            <label for="firstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter first name" required>
+        </div>
+        <div class="col-md-3">
+            <label for="middlename" class="form-label">Middle Name</label>
+            <input type="text" class="form-control" id="middlename" name="middlename" placeholder="Enter middle name">
+        </div>
+        <div class="col-md-3">
+            <label for="contactInput" class="form-label">Contact</label>
+            <input type="text" class="form-control" id="contactInput" name="contact" placeholder="Enter contact number" required>
+        </div>
+    </div>
 
-                    <!-- Gender and Batch -->
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-4">
-                            <label for="gender" class="form-label">Gender</label>
-                            <br>
-                            <select class="form-select" id="gender" name="gender" required>
-                                <option selected disabled>Choose...</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="course_id" class="form-label">Batch</label>
-                            <br>
-                            <select class="form-select" id="course_id" name="course_id" required>
-                                <option selected disabled>Choose...</option>
-                                <?php 
-                                $course = $conn->query("SELECT * FROM courses order by course asc");
-                                while($row=$course->fetch_assoc()): ?>
-                                    <option value="<?php echo $row['id'] ?>"><?php echo $row['course'] ?></option>
-                                <?php endwhile; ?>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="occupation" class="form-label">Occupation</label>
-                            <input type="text" class="form-control" id="occupation" name="connected_to" placeholder="Enter occupation">
-                        </div>
-                    </div>
+    <!-- Gender and Batch -->
+    <div class="row g-3 mb-3">
+        <div class="col-md-4">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" id="gender" name="gender" required>
+                <option selected disabled>Choose...</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="course_id" class="form-label">Batch</label>
+            <select class="form-select" id="course_id" name="course_id" required>
+                <option selected disabled>Choose...</option>
+                <?php 
+                $course = $conn->query("SELECT * FROM courses ORDER BY course ASC");
+                while ($row = $course->fetch_assoc()): ?>
+                    <option value="<?= $row['id'] ?>"><?= $row['course'] ?></option>
+                <?php endwhile; ?>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="connected_to" class="form-label">Occupation</label>
+            <input type="text" class="form-control" id="connected_to" name="connected_to" placeholder="Enter occupation">
+        </div>
+    </div>
 
-                    <!-- Image Upload, Email, and Password -->
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-4">
-                            <label for="img" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="img" name="img" onchange="displayImg(this, $(this))">
-                            <img src="" alt="Preview" id="cimg" class="img-fluid mt-2 rounded d-none">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
-                        </div>
-                    </div>
+    <!-- Image Upload, Email, and Password -->
+    <div class="row g-3 mb-3">
+        <div class="col-md-4">
+            <label for="img" class="form-label">Image</label>
+            <input type="file" class="form-control" id="img" name="img">
+        </div>
+        <div class="col-md-4">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
+        </div>
+        <div class="col-md-4">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+        </div>
+    </div>
 
-                    <!-- Submit Button -->
-                    <div class="text-center mt-4">
-                        <button type="submit" id="submit" href="index.php?page=login" class="btn btn-primary px-4 ">Sign Up</button>
-                    </div>
-                </form>
+    <!-- Submit Button -->
+    <div class="text-center mt-4">
+        <button type="submit" id="submit" class="btn btn-primary px-4">Sign Up</button>
+    </div>
+</form>
+
             </div>
         </div>
     </div>
@@ -235,25 +237,28 @@ include 'admin/db_connect.php';
         reader.readAsDataURL(input.files[0]);
     }
 }
-$('#create_account').submit(function(e){
-    e.preventDefault()
-    start_load()
+$('#create_account').submit(function(e) {
+    e.preventDefault(); // Prevent form from reloading page
+    start_load(); // Show loader (if implemented)
+    
     $.ajax({
-        url:'admin/ajax.php?action=signup',
+        url: 'admin/ajax.php?action=signup',
         data: new FormData($(this)[0]),
         cache: false,
         contentType: false,
         processData: false,
         method: 'POST',
-        type: 'POST',
-        success:function(resp){
-            if(resp == 1){
-                location.replace('index.php')
-            }else{
-                alert_toast("Data created successfully ", 'success');
-                setTimeout(() => location.reload(), 1500);
+        success: function(resp) {
+            if (resp == 1) {
+                alert_toast("Account created successfully!", 'success');
+                setTimeout(() => location.replace('index.php'), 1500);
+            } else if (resp == 2) {
+                alert_toast("Email already exists!", 'danger');
+            } else {
+                alert_toast("Failed to create account.", 'danger');
             }
         }
-    })
-})
+    });
+});
+
 </script>
