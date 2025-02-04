@@ -64,6 +64,12 @@ if($action == "update_alumni_acc"){
 	if($save)
 		echo $save;
 }
+
+if($action == "delete_alumni"){
+	$delete = $crud->delete_alumni();
+	if($delete)
+		echo $delete;
+}
 if($action == "save_gallery"){
 	$save = $crud->save_gallery();
 	if($save)
@@ -96,6 +102,23 @@ if($action == "delete_forum"){
 		echo $save;
 }
 
+if($action == "save_announcement"){
+	$save = $crud->save_announcement();
+	if($save)
+		echo $save;
+}
+if($action == "delete_announcement"){
+	$save = $crud->delete_announcement();
+	if($save)
+		echo $save;
+}
+
+if($action == "forum_participate"){
+	$save = $crud->forum_participate();
+	if($save)
+		echo $save;
+}
+
 if($action == "save_comment"){
 	$save = $crud->save_comment();
 	if($save)
@@ -123,25 +146,25 @@ if($action == "participate"){
 	if($save)
 		echo $save;
 }
-if($action == "get_venue_report"){
-	$get = $crud->get_venue_report();
-	if($get)
-		echo $get;
-}
-if($action == "save_art_fs"){
-	$save = $crud->save_art_fs();
-	if($save)
-		echo $save;
-}
-if($action == "delete_art_fs"){
-	$save = $crud->delete_art_fs();
-	if($save)
-		echo $save;
-}
-if($action == "get_pdetails"){
-	$get = $crud->get_pdetails();
-	if($get)
-		echo $get;
-}
+// if($action == "get_venue_report"){
+// 	$get = $crud->get_venue_report();
+// 	if($get)
+// 		echo $get;
+// }
+// if($action == "save_art_fs"){
+// 	$save = $crud->save_art_fs();
+// 	if($save)
+// 		echo $save;
+// }
+// if($action == "delete_art_fs"){
+// 	$save = $crud->delete_art_fs();
+// 	if($save)
+// 		echo $save;
+// }
+// if($action == "get_pdetails"){
+// 	$get = $crud->get_pdetails();
+// 	if($get)
+// 		echo $get;
+// }
 ob_end_flush();
 ?>
