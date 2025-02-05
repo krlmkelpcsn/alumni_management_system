@@ -16,6 +16,51 @@
                             <i class="fas fa-plus"></i> Add
                         </a> -->
                     </div>
+                    <div class="card-header bg-light d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <p class="mb-0 mr-1">Occupation: </p>
+                        <select class="form-select form-select-sm" id="filter_occupation">
+                            <option value="">All</option>
+                            <option value="unemployed">Unemployed</option>
+                        </select>
+                        </div>
+                    
+                        <p class="mb-0 ml-3" id="unemployed_percentage"></p>
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            updateUnemployedPercentage();
+
+                            $('#filter_occupation').change(function() {
+                                var selectedOccupation = $(this).val();
+                                $('tbody tr').each(function() {
+                                    var occupation = $(this).find('td:nth-child(6)').text().trim();
+                                    if (selectedOccupation === '' || occupation.toLowerCase() === selectedOccupation) {
+                                        $(this).show();
+                                    } else {
+                                        $(this).hide();
+                                    }
+                                });
+                            });
+                        });
+
+                        function updateUnemployedPercentage() {
+                            var totalAlumni = $('tbody tr').length;
+                            var unemployedAlumni = $('tbody tr').filter(function() {
+                                return $(this).find('td:nth-child(6)').text().trim().toLowerCase() === 'unemployed';
+                            }).length;
+                            var percentage = (unemployedAlumni / totalAlumni) * 100;
+                            $('#unemployed_percentage').text('Unemployed: ' + percentage.toFixed(2) + '%');
+                        }
+                    function updateUnemployedPercentage() {
+                        var totalAlumni = $('tbody tr').length;
+                        var unemployedAlumni = $('tbody tr').filter(function() {
+                            return $(this).find('td:nth-child(6)').text().trim().toLowerCase() === 'unemployed';
+                        }).length;
+                        var percentage = (unemployedAlumni / totalAlumni) * 100;
+                        $('#unemployed_percentage').html('Unemployed: ' + percentage.toFixed(2) + '% <div class="progress"><div class="progress-bar" role="progressbar" style="width: ' + percentage.toFixed(2) + '%;" aria-valuenow="' + percentage.toFixed(2) + '" aria-valuemin="0" aria-valuemax="100"></div></div>');
+                    }
+                    </script>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -26,6 +71,7 @@
                                         <th>Name</th>
                                         <th>Contact</th>
                                         <th>Batch</th>
+                                        <th>Occupation</th>
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -46,6 +92,7 @@
                                         <td><?php echo ucwords($row['name']); ?></td>
                                         <td><?php echo htmlspecialchars($row['contact'])?></td>
                                         <td><?php echo $row['course']; ?></td>
+                                        <td><?php echo htmlspecialchars($row['connected_to'])?></td>
                                         <td class="text-center">
                                             <?php if ($row['status'] == 1): ?>
                                                 <span class="badge bg-success text-white">Verified</span>
