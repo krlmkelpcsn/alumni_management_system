@@ -73,22 +73,12 @@ header.masthead,header.masthead:before {
 .head {
         padding-top:7rem;
     }
-
-/* .search_container { 
-    align-self:center;
-    padding: 0 15em;
-
-} */
-
 .container {
     padding:0;
     /* display: flex; */
     gap:0.5em;  
 }
 
-/* #filter {
-    width: 60%;
-} */
 .container .btn {
     width: 20%;
 }
@@ -98,14 +88,24 @@ header.masthead,header.masthead:before {
     justify-content:center;
 }
 
+
+.container1 .btn {
+    width: 20%;
+}
+header .head h1 {
+        color: #4e73df;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
 </style>
-        <header class="">
+<div class="container pt-4">
+    <header class="">
             <div class="head container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end mb-4 page-title">
-                        <h1 class="text-white">List of Alumni</h1>
-                        
-
+                    <h1 class="mt-3 display-4 fw-bold">List of Alumni</h1>
                     <div class="col-md-12 mb-2 justify-content-center">
                     </div>                        
                     </div>
@@ -113,38 +113,17 @@ header.masthead,header.masthead:before {
                 </div>
             </div>
         </header>
-        	<!-- <div class="container">
-        		<div class="card mb-4 mt-4">
-		        <div class="card-body">
-		            <div class="">
-		                 <div class="col-md-8">
-		                    <div class="input-group mb-8">
-		                      <div class="input-group-prepend">
-		                        <span class="input-group-text" id="filter-field"><i class="fa fa-search"></i></span>
-		                      </div>
-		                      <input type="text" class="form-control" id="filter" placeholder="name,batch, etc." aria-label="Filter" aria-describedby="filter-field">
-		                    </div>
-		                </div> 
-		                 <div class="col-md-4">
-		                    <button class="btn btn-primary btn-block btn-sm" id="search">Search</button>
-		                </div>
-		            
-		            
-		         </div>
-		    </div>
-        	</div> -->
-             <div class="search_container ">
 
-                <div class="input-group col-md-6 ">
-      <input type="text"  id="filter" class="form-control rounded" placeholder="Name" aria-label="Search" aria-describedby="search-addon" />
-      <button type="button" class="btn btn-outline-primary col-md-3" data-mdb-ripple-init>search</button>
-    </div>
+    <div class="search_container d-flex justify-content-center mb-5">
+        <div class="input-group" style="width: 60%;">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
             </div>
-            <div class="container-fluid mt-3 pt-2">
-               
-                <div class="row-items">
-                <div class="col-lg-12">
-                    <div class="row">
+            <input type="text" class="form-control" id="filter" placeholder="Search Alumna/Alumnus" aria-label="Filter">
+            <button class="btn btn-primary ml-2" id="search">Search</button>
+        </div>
+    </div>
+            <div class="row mb-6" >
                 <?php
                 $fpath = 'admin/assets/uploads';
                 $alumni = $conn->query("SELECT a.*,c.course,Concat(a.lastname,', ',a.firstname,' ',a.middlename) as name from alumnus_bio a inner join courses c on c.id = a.course_id order by Concat(a.lastname,', ',a.firstname,' ',a.middlename) asc");
