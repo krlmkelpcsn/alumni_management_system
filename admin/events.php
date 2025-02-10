@@ -64,13 +64,13 @@
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-sm btn-info view_event" type="button" data-id="<?php echo $row['id']; ?>">
-                                            <i class="fas fa-eye"></i> View
+                                            <i class="fas fa-eye"></i> 
                                         </button>
                                         <button class="btn btn-sm btn-warning edit_event" type="button" data-id="<?php echo $row['id']; ?>">
-                                            <i class="fas fa-edit"></i> Edit
+                                            <i class="fas fa-edit"></i> 
                                         </button>
                                         <button class="btn btn-sm btn-danger delete_event" type="button" data-id="<?php echo $row['id']; ?>">
-                                            <i class="fas fa-trash-alt"></i> Delete
+                                            <i class="fas fa-trash-alt"></i> 
                                         </button>
                                     </td>
                                 </tr>
