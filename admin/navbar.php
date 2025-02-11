@@ -14,7 +14,7 @@
         height: 100vh;
         padding-top: 20px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s;
+        transition: all 0.3s ease-in-out;
     }
 
     .sidebar-list {
@@ -26,11 +26,12 @@
         display: flex;
         align-items: center;
         color: #f4f4f4;
-        padding: 12px 20px;
+        padding: 10px 18px;
         margin: 5px 0;
-        border-radius: 10px;
-        transition: all 0.3s;
+        border-radius: 8px;
+        transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
         text-decoration: none;
+        font-size: 0.9rem;
     }
 
     .sidebar-list a:hover {
@@ -61,22 +62,22 @@
 
     .collapse a {
         padding-left: 30px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
-		.admin-avatar {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #007bff;
-	}
+    .admin-avatar {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #007bff;
+    }
 
-	.user-info {
-		display:flex;
-		align-items:center;
-		justify-content:center;
-	}
+    .user-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 </style>
 
@@ -92,23 +93,26 @@
 <h4 class="user-header text-center mt-2"><?php echo $_SESSION['login_name']; ?></h4>
     <div class="sidebar-list">
         <a href="index.php?page=home" class="nav-item nav-home">
-            <span class="icon-field"><i class="bx bx-home"></i></span> Dashboard
+            <span class="icon-field"><i class="bx bx-grid"></i></span> Dashboard
         </a>
         <a href="index.php?page=gallery" class="nav-item nav-gallery">
             <span class="icon-field"><i class="bx bx-image"></i></span> Gallery
         </a>
         <a href="index.php?page=forums" class="nav-item nav-forums">
-            <span class="icon-field"><i class="bx bx-chat"></i></span> Forum
+            <span class="icon-field"><i class="bx bx-conversation"></i></span> Forum
         </a>
         <a href="index.php?page=announcement" class="nav-item nav-announcement">
-            <span class="icon-field"><i class="bx bx-chat"></i></span> Announcements
+            <span class="icon-field"><i class="bx bx-note"></i></span> Announcements
+        </a>
+        <a href="index.php?page=messages" class="nav-item nav-messages">
+            <span class="icon-field"><i class="bx bx-chat"></i></span> Messages
         </a>
         <?php if ($_SESSION['login_type'] == 1): ?>
             <a href="index.php?page=jobs" class="nav-item nav-jobs">
                 <span class="icon-field"><i class="bx bx-briefcase"></i></span> Jobs
             </a>
             <a href="index.php?page=events" class="nav-item nav-events">
-                <span class="icon-field"><i class="bx bx-grid"></i></span> Events
+                <span class="icon-field"><i class="bx bx-calendar"></i></span> Events
             </a>
             <a href="index.php?page=alumni" class="nav-item nav-alumni">
                 <span class="icon-field"><i class="bx bx-user"></i></span> Alumni List
