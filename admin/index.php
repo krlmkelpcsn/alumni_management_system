@@ -58,6 +58,10 @@
     max-width: calc(100%);
   }
 
+  main#view-panel {
+    margin-bottom: 3.5rem;
+  
+  }
 </style>
 
 <body>
@@ -116,6 +120,7 @@
       </div>
     </div>
   </div>
+
 </body>
 <script>
 	 window.start_load = function(){
