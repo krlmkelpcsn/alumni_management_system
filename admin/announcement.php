@@ -97,11 +97,11 @@
                                             </a> -->
                                             <?php if ($_SESSION['login_type'] == 1): ?>
                                             <button class="btn btn-sm btn-warning edit_announcement" type="button" data-id="<?php echo $row['id']; ?>" title="View Announcement">
-                                                <i class="fas fa-eye"></i> View
+                                                <i class="fas fa-eye"></i> 
                                             </button> 
                                             <?php endif; ?>
                                             <button class="btn btn-sm btn-danger delete_announcement" type="button" disabled data-id="<?php echo $row['id']; ?>" title="Delete Announcement">
-                                                <i class="fas fa-trash-alt"></i> Delete
+                                                <i class="fas fa-trash-alt"></i> 
                                             </button>
                                         </td>
                                     </tr>

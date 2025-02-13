@@ -87,13 +87,13 @@
                                         <!-- <td class="text-center"><p class='badge bg-success text-white'><?php echo number_format($count_comments ); ?></p></td> -->
                                         <td class="text-center">
                                             <a class="btn btn-sm btn-info view_forum" href="../index.php?page=view_forum&id=<?php echo $row['id']; ?>" target="_blank" data-id="<?php echo $row['id']; ?>" title="View Topic">
-                                                <i class="fas fa-eye"></i> View
+                                                <i class="fas fa-eye"></i> 
                                             </a>
                                             <button class="btn btn-sm btn-warning edit_forum" type="button" data-id="<?php echo $row['id']; ?>" title="Edit Topic">
-                                                <i class="fas fa-edit"></i> Edit
+                                                <i class="fas fa-edit"></i> 
                                             </button>
                                             <button class="btn btn-sm btn-danger delete_forum" type="button" data-id="<?php echo $row['id']; ?>" title="Delete Topic">
-                                                <i class="fas fa-trash-alt"></i> Delete
+                                                <i class="fas fa-trash-alt"></i> 
                                             </button>
                                         </td>
                                     </tr>

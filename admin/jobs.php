@@ -64,13 +64,13 @@
                                     </td>
                                     <td class="text-center">
                                         <button class="btn btn-sm btn-info view_career" type="button" data-id="<?php echo $row['id']; ?>" title="View Job">
-                                            <i class="fas fa-eye"></i> View
+                                            <i class="fas fa-eye"></i>
                                         </button>
                                         <button class="btn btn-sm btn-warning edit_career" type="button" data-id="<?php echo $row['id']; ?>" title="Edit Job">
-                                            <i class="fas fa-edit"></i> Edit
+                                            <i class="fas fa-edit"></i> 
                                         </button>
                                         <button class="btn btn-sm btn-danger delete_career" type="button" data-id="<?php echo $row['id']; ?>" title="Delete Job">
-                                            <i class="fas fa-trash-alt"></i> Delete
+                                            <i class="fas fa-trash-alt"></i> 
                                         </button>
                                     </td>
                                 </tr>
