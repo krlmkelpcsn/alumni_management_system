@@ -145,7 +145,7 @@ while($row = $commits->fetch_assoc()){
             data:{event_id:$id},
             success:function(resp){
                 if(resp==1){
-                    alert_toast("Data successfully deleted",'success')
+                    alert_toast("Data successfully saved",'success')
                     setTimeout(function(){
                         location.reload()
                     },1500)

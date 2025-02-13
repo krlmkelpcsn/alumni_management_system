@@ -105,13 +105,13 @@ include 'admin/db_connect.php';
         </div>
     </div>
 </header>
-<?php if(isset($_SESSION['login_id'])): ?>
+<!-- <?php if(isset($_SESSION['login_id'])): ?>
     <div class="d-flex align-items-center justify-content-center">
         <button class="btn btn-primary btn-md" type="button" id="new_gallery">
             <i class="fas fa-plus"></i> Add gallery
         </button>
         <?php endif; ?>
-    </div>
+    </div> -->
 <div class="container-fluid mt-3 pt-2">
     <div class="row-items">
         <div class="col-lg-12">
@@ -165,9 +165,9 @@ include 'admin/db_connect.php';
 </div>
 
 <script>
-    $('#new_gallery').click(function() {
-            uni_modal("Add Gallery", "manage_gallery.php", 'mid-large');
-        });
+    // $('#new_gallery').click(function() {
+    //         uni_modal("Add Gallery", "manage_gallery.php", 'mid-large');
+    //     });
         
     $('.book-gallery').click(function(){
         uni_modal("Submit Booking Request","booking.php?gallery_id="+$(this).attr('data-id'))

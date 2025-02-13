@@ -141,7 +141,7 @@ textarea {
                         <div class="col-lg-8 align-self-end mb-4 page-title">
                         <h1 class="mt-3 display-4 fw-bold">Forum List</h1>
                         <span class="badge badge-primary px-3 pt-1 pb-1">
-                            <b><i>Topic Created by: <?php echo $name ?></i></b>
+                            <b><i>Posted By: <?php echo $name ?></i></b>
                         </span>
                         <div class="col-md-12 mb-2 justify-content-center">
                         </div>                        

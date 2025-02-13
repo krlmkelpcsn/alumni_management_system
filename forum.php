@@ -97,13 +97,13 @@ header .head h1 {
                 </div>
             </div>
         </header>
-        <?php if(isset($_SESSION['login_id'])): ?>
+        <!-- <?php if(isset($_SESSION['login_id'])): ?>
     <div class="d-flex align-items-center justify-content-center">
         <button class="btn btn-primary btn-md mb-5" type="button" id="new_forum">
             <i class="fas fa-plus"></i> Add Forum
         </button>
         <?php endif; ?>
-    </div>
+    </div> -->
 
     <div class="search_container d-flex justify-content-center mb-5">
         <div class="input-group" style="width: 60%;">
@@ -194,9 +194,9 @@ header .head h1 {
     //     location.href = "index.php?page=view_gallery&id="+$(this).attr('data-id')
     // })
     // New Forum Button Click
-    $('#new_forum').click(function() {
-        uni_modal("New Forum Entry", "manage_forum.php", 'mid-large');
-    });
+    // $('#new_forum').click(function() {
+    //     uni_modal("New Forum Entry", "manage_forum.php", 'mid-large');
+    // });
     // $('#new_forum').click(function(){
     //     uni_modal("New Topic","manage_forum.php",'mid-large')
     // })
