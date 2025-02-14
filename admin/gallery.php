@@ -67,33 +67,33 @@
                                 $gallery = $conn->query("SELECT * FROM gallery ORDER BY id ASC");
                                 while ($row = $gallery->fetch_assoc()):
                                 ?>
-                                <tr>
-                                    <td class="text-center"><?php echo $i++; ?></td>
-                                    <td class="text-center">
-                                        <img src="<?php  echo isset($img[$row['id']]) && is_file($fpath.'/'.$img[$row['id']]) ? $fpath.'/'.$img[$row['id']] : ''; ?>" class="gimg img-thumbnail" alt="Gallery Image">
-                                    </td>
+                                    <tr>
+                                        <td class="text-center"><?php echo $i++; ?></td>
+                                        <td class="text-center">
+                                            <img src="<?php echo isset($img[$row['id']]) && is_file($fpath . '/' . $img[$row['id']]) ? $fpath . '/' . $img[$row['id']] : ''; ?>" class="gimg img-thumbnail" alt="Gallery Image">
+                                        </td>
 
-                                    <td><?php echo $row['about']; ?></td>
-                                    <td class="text-center">
-        <!-- Check if the user role is not 'client' -->
-        <?php if ($_SESSION['login_type'] == 1): ?>
-            <button class="btn btn-sm btn-warning edit_gallery" type="button" 
-                    data-id="<?php echo $row['id']; ?>" 
-                    data-about="<?php echo htmlspecialchars($row['about']); ?>" 
-                    data-src="<?php echo isset($img[$row['id']]) && is_file($fpath.'/'.$img[$row['id']]) ? $fpath.'/'.$img[$row['id']] : ''; ?>">
-                <i class="fas fa-edit"></i> Edit
-            </button>
-            <button class="btn btn-sm btn-danger delete_gallery" type="button" 
-                    data-id="<?php echo $row['id']; ?>">
-                <i class="fas fa-trash-alt"></i> Delete
-            </button>
-        <?php else: ?>
-            <!-- Show a placeholder or nothing for clients -->
-            <span>No Actions Available</span>
-        <?php endif; ?>
-            </td>
-        </tr>
-        <?php endwhile; ?>
+                                        <td><?php echo $row['about']; ?></td>
+                                        <td class="text-center">
+                                            <!-- Check if the user role is not 'client' -->
+                                            <?php if ($_SESSION['login_type'] == 1): ?>
+                                                <button class="btn btn-sm btn-warning edit_gallery" type="button"
+                                                    data-id="<?php echo $row['id']; ?>"
+                                                    data-about="<?php echo htmlspecialchars($row['about']); ?>"
+                                                    data-src="<?php echo isset($img[$row['id']]) && is_file($fpath . '/' . $img[$row['id']]) ? $fpath . '/' . $img[$row['id']] : ''; ?>">
+                                                    <i class="fas fa-edit"></i>
+                                                    <!-- Delete Button -->
+                                                    <button class="btn btn-sm btn-danger delete_gallery" type="button"
+                                                        data-id="<?php echo $row['id']; ?>">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                <?php else: ?>
+                                                    <!-- Show a placeholder or nothing for clients -->
+                                                    <span>No Actions Available</span>
+                                                <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
                             </tbody>
                         </table>
                     </div>
@@ -107,13 +107,16 @@
     .btn {
         border-radius: 0.3rem;
     }
+
     td {
         vertical-align: middle !important;
     }
+
     img#gimg {
         max-height: 200px;
         max-width: 100%;
     }
+
     .gimg {
         max-height: 50px;
         max-width: 50px;
@@ -122,39 +125,39 @@
 </style>
 
 <script>
-        // New Career Button Click
-        $('#new_gallery').click(function() {
-            uni_modal("Add Gallery", "manage_gallery.php", 'mid-large');
-        });
+    // New Career Button Click
+    $('#new_gallery').click(function() {
+        uni_modal("Add Gallery", "manage_gallery.php", 'mid-large');
+    });
 
 
-        $('.edit_gallery').click(function() {
-            uni_modal("Edit Gallery", "manage_gallery.php?id=" + $(this).attr('data-id'), 'mid-large');
-        });
+    $('.edit_gallery').click(function() {
+        uni_modal("Edit Gallery", "manage_gallery.php?id=" + $(this).attr('data-id'), 'mid-large');
+    });
 
-        // View Career Button Click
-        // $('.view_gallery').click(function() {
-        //     uni_modal("Job Opportunity", "view_gallery.php?id=" + $(this).attr('data-id'), 'mid-large');
-        // });
+    // View Career Button Click
+    // $('.view_gallery').click(function() {
+    //     uni_modal("Job Opportunity", "view_gallery.php?id=" + $(this).attr('data-id'), 'mid-large');
+    // });
 
-        // Delete Career Button Click
-        // $('.delete_career').click(function() {
-        //     _conf("Are you sure you want to delete this job post?", "delete_career", [$(this).attr('data-id')], 'mid-large');
-        // });
+    // Delete Career Button Click
+    // $('.delete_career').click(function() {
+    //     _conf("Are you sure you want to delete this job post?", "delete_career", [$(this).attr('data-id')], 'mid-large');
+    // });
 
 
 
     function displayImg(input, _this) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 $('#cimg').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-	
+
 
     // $('#manage-gallery').submit(function (e) {
     //     e.preventDefault();
@@ -179,16 +182,16 @@
     // });
 
     // $('.edit_gallery').click(function(){
-	// 	start_load()
-	// 	var cat = $('#manage-gallery')
-	// 	cat.get(0).reset()
-	// 	cat.find("[name='id']").val($(this).attr('data-id'))
-	// 	cat.find("[name='about']").val($(this).attr('data-about'))
-	// 	cat.find("img").attr('src',$(this).attr('data-src'))
-	// 	end_load()
-	// })
+    // 	start_load()
+    // 	var cat = $('#manage-gallery')
+    // 	cat.get(0).reset()
+    // 	cat.find("[name='id']").val($(this).attr('data-id'))
+    // 	cat.find("[name='about']").val($(this).attr('data-about'))
+    // 	cat.find("img").attr('src',$(this).attr('data-src'))
+    // 	end_load()
+    // })
 
-    $('.delete_gallery').click(function () {
+    $('.delete_gallery').click(function() {
         _conf("Are you sure to delete this data?", "delete_gallery", [$(this).attr('data-id')]);
     });
 
@@ -197,8 +200,10 @@
         $.ajax({
             url: 'ajax.php?action=delete_gallery',
             method: 'POST',
-            data: { id: id },
-            success: function (resp) {
+            data: {
+                id: id
+            },
+            success: function(resp) {
                 if (resp == 1) {
                     alert_toast("Data successfully deleted", 'success');
                     setTimeout(() => location.reload(), 1500);
