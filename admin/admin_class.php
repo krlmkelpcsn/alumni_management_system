@@ -76,7 +76,7 @@ Class Action {
 						unset($_SESSION[$key]);
 					}
 					return 2 ;
-					exit;
+		
 				}
 				return 1;
 		}else{
@@ -184,6 +184,7 @@ Class Action {
 			}
 		}
 	}
+
 	function update_account(){
 		extract($_POST);
 		$data = " name = '".$firstname.' '.$lastname."' ";
@@ -378,6 +379,17 @@ Class Action {
 			return 1;
 		}
 	}
+
+	
+	
+	function forum_participate(){
+		extract($_POST);
+		$data = " forum_id = '$event_id' ";
+		$data .= ", user_id = '{$_SESSION['login_id']}' ";
+		$commit = $this->db->query("INSERT INTO forum_commits set $data ");
+		if($commit)
+			return 1;
+	}
 	function save_comment(){
 		extract($_POST);
 		$data = " comment = '".htmlentities(str_replace("'","&#x2019;",$comment))."' ";
@@ -399,6 +411,37 @@ Class Action {
 			return 1;
 		}
 	}
+
+	function save_announcement(){
+		extract($_POST);
+		$data = " title = '$title' ";
+		$data .= ", content = '".htmlentities(str_replace("'","&#x2019;",$description))."' ";
+		$data .= ", status = '$status' ";
+		if ($status == 'approved') {
+			$data .= ", status = 'approved' ";
+		} else if ($status == 'rejected') {
+			$data .= ", status = 'rejected' ";
+		} else {
+			$data .= ", status = 'pending' ";
+		}
+
+		if(empty($id)){
+		$data .= ", user_id = '{$_SESSION['login_id']}' ";
+			$save = $this->db->query("INSERT INTO announcements set ".$data);
+		}else{
+			$save = $this->db->query("UPDATE announcements set ".$data." where id=".$id);
+		}
+		if($save)
+			return 1;
+	}
+	function delete_announcement(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM announcements where id = ".$id);
+		if($delete){
+			return 1;
+		}
+	}
+
 	function save_event(){
 		extract($_POST);
 		$data = " title = '$title' ";
@@ -436,5 +479,12 @@ Class Action {
 		if($commit)
 			return 1;
 
+	}
+	function delete_alumni(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM alumnus_bio where id = ".$id);
+		if($delete){
+			return 1;
+		}
 	}
 }
