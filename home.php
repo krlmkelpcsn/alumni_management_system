@@ -2,54 +2,6 @@
 include 'admin/db_connect.php'; 
 ?>
 <style>
-#portfolio .img-fluid{
-    width: calc(100%);
-    height: 30vh;
-    z-index: -1;
-    position: relative;
-    padding: 1em;
-}
-.event-list{
-cursor: pointer;
-}
-span.hightlight{
-    background: yellow;
-}
-.banner{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 26vh;
-        width: calc(30%);
-    }
-    .banner img{
-        width: calc(100%);
-        height: calc(100%);
-        cursor :pointer;
-    }
-.event-list{
-cursor: pointer;
-border: unset;
-flex-direction: inherit;
-}
-
-.event-list .banner {
-    width: calc(40%)
-}
-.event-list .card-body {
-    width: calc(60%)
-}
-.event-list .banner img {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    min-height: 50vh;
-}
-span.hightlight{
-    background: yellow;
-}
-.banner{
-   min-height: calc(100%)
-}
 
 
 /* Hero Section */
@@ -208,6 +160,10 @@ span.hightlight{
     }
   
 </style>
+
+<html>
+  <body>
+  
         <!-- <header class="masthead">
             <div class="container-fluid h-200">
                 <div class="row h-100 align-items-center justify-content-center text-center">
@@ -251,7 +207,7 @@ span.hightlight{
 
     <div  class="container pt-4 ">
       <h2 class="text-center mb-4">Events</h2>
-<div class="row-items">
+    <div class="row-items">
             <div class="row">
               
                 <?php
@@ -287,26 +243,28 @@ span.hightlight{
 
 
 <script>
-
   
      $('.read_more').click(function(){
-         location.href = "index.php?page=view_event&id="+$(this).attr('data-id')
-     })
+         location.href = "index.php?page=view_event&id="+$(this).attr('data-id');
+     });
      $('.banner img').click(function(){
-        viewer_modal($(this).attr('src'))
-    })
+        viewer_modal($(this).attr('src'));
+    });
     $('#filter').keyup(function(e){
-        var filter = $(this).val()
+        var filter = $(this).val();
 
         $('.card.event-list .filter-txt').each(function(){
             var txto = $(this).html();
-            txt = txto
+            txt = txto;
             if((txt.toLowerCase()).includes((filter.toLowerCase())) == true){
-                $(this).closest('.card').toggle(true)
+                $(this).closest('.card').toggle(true);
             }else{
-                $(this).closest('.card').toggle(false)
+                $(this).closest('.card').toggle(false);
                
             }
-        })
-    })
+        });
+    });
 </script>
+
+</body>
+</html>
