@@ -78,19 +78,18 @@
         align-items: center;
         justify-content: center;
     }
-
 </style>
 
 <nav id="sidebar">
-<!-- <div class="sidebar-header">Admin Panel</div> -->
+    <!-- <div class="sidebar-header">Admin Panel</div> -->
 
-<!-- User Info Section -->
-<div class="user-info">
-		<!-- Display User's Avatar and Name -->
-	<!-- Default Admin Avatar -->
-	<img src="assets/img/default_admin.webp" alt="Admin Avatar" class="admin-avatar">
-</div>
-<h4 class="user-header text-center mt-2"><?php echo $_SESSION['login_name']; ?></h4>
+    <!-- User Info Section -->
+    <div class="user-info">
+        <!-- Display User's Avatar and Name -->
+        <!-- Default Admin Avatar -->
+        <img src="assets/img/default_admin.webp" alt="Admin Avatar" class="admin-avatar">
+    </div>
+    <h4 class="user-header text-center mt-2"><?php echo $_SESSION['login_name']; ?></h4>
     <div class="sidebar-list">
         <a href="index.php?page=home" class="nav-item nav-home">
             <span class="icon-field"><i class="bx bx-grid"></i></span> Dashboard
@@ -104,9 +103,9 @@
         <a href="index.php?page=announcement" class="nav-item nav-announcement">
             <span class="icon-field"><i class="bx bx-note"></i></span> Announcements
         </a>
-        <a href="index.php?page=messages" class="nav-item nav-messages">
+        <!-- <a href="index.php?page=messages" class="nav-item nav-messages">
             <span class="icon-field"><i class="bx bx-chat"></i></span> Messages
-        </a>
+        </a> -->
         <?php if ($_SESSION['login_type'] == 1): ?>
             <a href="index.php?page=jobs" class="nav-item nav-jobs">
                 <span class="icon-field"><i class="bx bx-briefcase"></i></span> Jobs
